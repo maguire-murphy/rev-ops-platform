@@ -1,0 +1,283 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Organizations (tenants)
+model Organization {
+  id               String   @id @default(uuid()) @db.Uuid
+  name             String   @db.VarChar(255)
+  slug             String   @unique @db.VarChar(255)
+  stripeConnected  Boolean  @default(false) @map("stripe_connected")
+  hubspotConnected Boolean  @default(false) @map("hubspot_connected")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  users         User[]
+  integrations  Integration[]
+  customers     Customer[]
+  subscriptions Subscription[]
+  mrrMovements  MrrMovement[]
+  mrrSnapshots  MrrSnapshot[]
+  deals         Deal[]
+  activities    Activity[]
+  dealStageHistory DealStageHistory[]
+
+  @@map("organizations")
+}
+
+// Users
+model User {
+  id             String       @id @default(uuid()) @db.Uuid
+  organizationId String?      @map("organization_id") @db.Uuid
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  email          String       @unique @db.VarChar(255)
+  name           String?      @db.VarChar(255)
+  role           String?      @default("member") @db.VarChar(50) // 'owner', 'admin', 'member'
+  image          String?
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("users")
+}
+
+// Integration Credentials (encrypted)
+model Integration {
+  id                    String       @id @default(uuid()) @db.Uuid
+  organizationId        String       @map("organization_id") @db.Uuid
+  organization          Organization @relation(fields: [organizationId], references: [id])
+  provider              String       @db.VarChar(50) // 'stripe', 'hubspot', 'pipedrive'
+  stripeAccountId       String?      @map("stripe_account_id") @db.VarChar(255)
+  accessTokenEncrypted  String?      @map("access_token_encrypted")
+  refreshTokenEncrypted String?      @map("refresh_token_encrypted")
+  metadata              Json?
+  status                String?      @default("active") @db.VarChar(50)
+  lastSyncAt            DateTime?    @map("last_sync_at") @db.Timestamptz
+  createdAt             DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("integrations")
+}
+
+// Customers (unified from billing + CRM)
+model Customer {
+  id               String       @id @default(uuid()) @db.Uuid
+  organizationId   String       @map("organization_id") @db.Uuid
+  organization     Organization @relation(fields: [organizationId], references: [id])
+
+  // External IDs
+  stripeCustomerId String?      @unique @map("stripe_customer_id") @db.VarChar(255)
+  hubspotCompanyId String?      @map("hubspot_company_id") @db.VarChar(255)
+  hubspotContactId String?      @map("hubspot_contact_id") @db.VarChar(255)
+
+  // Core fields
+  name             String?      @db.VarChar(255)
+  email            String?      @db.VarChar(255)
+  companyName      String?      @map("company_name") @db.VarChar(255)
+
+  // Metadata
+  metadata         Json?
+  createdAt        DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  subscriptions    Subscription[]
+  mrrMovements     MrrMovement[]
+  deals            Deal[]
+  activities       Activity[]
+
+  @@unique([organizationId, stripeCustomerId])
+  @@unique([organizationId, hubspotCompanyId])
+  @@index([organizationId])
+  @@map("customers")
+}
+
+// Subscriptions
+model Subscription {
+  id                   String       @id @default(uuid()) @db.Uuid
+  organizationId       String       @map("organization_id") @db.Uuid
+  organization         Organization @relation(fields: [organizationId], references: [id])
+  customerId           String?      @map("customer_id") @db.Uuid
+  customer             Customer?    @relation(fields: [customerId], references: [id])
+
+  // Stripe fields
+  stripeSubscriptionId String?      @unique @map("stripe_subscription_id") @db.VarChar(255)
+  stripePriceId        String?      @map("stripe_price_id") @db.VarChar(255)
+
+  // Subscription details
+  status               String?      @db.VarChar(50) // 'active', 'canceled', 'past_due', 'trialing'
+  planName             String?      @map("plan_name") @db.VarChar(255)
+  billingInterval      String?      @map("billing_interval") @db.VarChar(20) // 'month', 'year'
+  billingIntervalCount Int?         @default(1) @map("billing_interval_count")
+
+  // Amounts (in cents)
+  amount               Int
+  currency             String?      @default("usd") @db.VarChar(3)
+
+  // Dates
+  currentPeriodStart   DateTime?    @map("current_period_start") @db.Timestamptz
+  currentPeriodEnd     DateTime?    @map("current_period_end") @db.Timestamptz
+  canceledAt           DateTime?    @map("canceled_at") @db.Timestamptz
+  startedAt            DateTime?    @map("started_at") @db.Timestamptz
+
+  createdAt            DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt            DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  mrrMovements         MrrMovement[]
+
+  @@index([organizationId])
+  @@index([customerId])
+  @@index([organizationId, status])
+  @@map("subscriptions")
+}
+
+// MRR Movements (fact table for MRR waterfall)
+model MrrMovement {
+  id             String       @id @default(uuid()) @db.Uuid
+  organizationId String       @map("organization_id") @db.Uuid
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  customerId     String?      @map("customer_id") @db.Uuid
+  customer       Customer?    @relation(fields: [customerId], references: [id])
+  subscriptionId String?      @map("subscription_id") @db.Uuid
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id])
+
+  // Movement details
+  movementType   String       @map("movement_type") @db.VarChar(50) // 'new', 'expansion', 'contraction', 'churn', 'reactivation'
+  mrrAmount      Int          @map("mrr_amount") // in cents
+  previousMrr    Int?         @default(0) @map("previous_mrr")
+  newMrr         Int          @map("new_mrr")
+
+  // Date (for time-series queries)
+  effectiveDate  DateTime     @map("effective_date") @db.Date
+
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([organizationId, effectiveDate])
+  @@map("mrr_movements")
+}
+
+// Daily MRR Snapshots (materialized for fast queries)
+model MrrSnapshot {
+  id               String       @id @default(uuid()) @db.Uuid
+  organizationId   String       @map("organization_id") @db.Uuid
+  organization     Organization @relation(fields: [organizationId], references: [id])
+
+  snapshotDate     DateTime     @map("snapshot_date") @db.Date
+
+  // MRR breakdown
+  totalMrr         Int          @map("total_mrr")
+  newMrr           Int?         @default(0) @map("new_mrr")
+  expansionMrr     Int?         @default(0) @map("expansion_mrr")
+  contractionMrr   Int?         @default(0) @map("contraction_mrr")
+  churnMrr         Int?         @default(0) @map("churn_mrr")
+  reactivationMrr  Int?         @default(0) @map("reactivation_mrr")
+
+  // Customer counts
+  totalCustomers   Int?         @map("total_customers")
+  newCustomers     Int?         @map("new_customers")
+  churnedCustomers Int?         @map("churned_customers")
+
+  createdAt        DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  @@unique([organizationId, snapshotDate])
+  @@map("mrr_snapshots")
+}
+
+// Deals/Opportunities (from CRM)
+model Deal {
+  id             String       @id @default(uuid()) @db.Uuid
+  organizationId String       @map("organization_id") @db.Uuid
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  customerId     String?      @map("customer_id") @db.Uuid
+  customer       Customer?    @relation(fields: [customerId], references: [id])
+
+  // External IDs
+  hubspotDealId  String?      @map("hubspot_deal_id") @db.VarChar(255)
+
+  // Deal details
+  name           String?      @db.VarChar(255)
+  amount         Int?         // in cents
+  currency       String?      @default("usd") @db.VarChar(3)
+  stage          String?      @db.VarChar(100)
+  pipeline       String?      @db.VarChar(100)
+  probability    Int?         // 0-100
+
+  // Dates
+  closeDate      DateTime?    @map("close_date") @db.Date
+  createdDate    DateTime?    @map("created_date") @db.Date
+
+  // Owner
+  ownerId        String?      @map("owner_id") @db.VarChar(255)
+  ownerName      String?      @map("owner_name") @db.VarChar(255)
+
+  // Status
+  isClosed       Boolean?     @default(false) @map("is_closed")
+  isWon          Boolean?     @default(false) @map("is_won")
+
+  // Metadata
+  metadata       Json?
+
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  activities     Activity[]
+  stageHistory   DealStageHistory[]
+
+  @@index([organizationId])
+  @@index([organizationId, stage, isClosed])
+  @@map("deals")
+}
+
+// Deal Stage History (for velocity tracking)
+model DealStageHistory {
+  id             String       @id @default(uuid()) @db.Uuid
+  organizationId String       @map("organization_id") @db.Uuid
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  dealId         String?      @map("deal_id") @db.Uuid
+  deal           Deal?        @relation(fields: [dealId], references: [id])
+
+  fromStage      String?      @map("from_stage") @db.VarChar(100)
+  toStage        String?      @map("to_stage") @db.VarChar(100)
+  changedAt      DateTime     @map("changed_at") @db.Timestamptz
+
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("deal_stage_history")
+}
+
+// Activities (emails, calls, meetings from CRM)
+model Activity {
+  id                  String       @id @default(uuid()) @db.Uuid
+  organizationId      String       @map("organization_id") @db.Uuid
+  organization        Organization @relation(fields: [organizationId], references: [id])
+  dealId              String?      @map("deal_id") @db.Uuid
+  deal                Deal?        @relation(fields: [dealId], references: [id])
+  customerId          String?      @map("customer_id") @db.Uuid
+  customer            Customer?    @relation(fields: [customerId], references: [id])
+
+  // External IDs
+  hubspotEngagementId String?      @map("hubspot_engagement_id") @db.VarChar(255)
+
+  // Activity details
+  activityType        String?      @map("activity_type") @db.VarChar(50) // 'email', 'call', 'meeting', 'note', 'task'
+  subject             String?      @db.VarChar(500)
+  direction           String?      @db.VarChar(20) // 'inbound', 'outbound'
+
+  // Timing
+  activityDate        DateTime?    @map("activity_date") @db.Timestamptz
+  durationMinutes     Int?         @map("duration_minutes")
+
+  // Metadata
+  metadata            Json?
+
+  createdAt           DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([dealId])
+  @@index([organizationId, activityDate])
+  @@map("activities")
+}
