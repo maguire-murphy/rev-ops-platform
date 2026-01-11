@@ -1,6 +1,5 @@
 "use client";
 
-import { STRIPE_OAUTH_URL } from "@/server/integrations/stripe";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,13 +7,16 @@ export function ConnectStripeButton() {
     const [oauthUrl, setOauthUrl] = useState("");
 
     useEffect(() => {
-        const clientId = process.env.NEXT_PUBLIC_STRIPE_CLIENT_ID;
-        const redirectUri = `${window.location.origin}/api/integrations/stripe/callback`;
-        setOauthUrl(
-            `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${clientId}&scope=read_write&redirect_uri=${encodeURIComponent(
-                redirectUri
-            )}`
-        );
+        if (typeof window !== "undefined") {
+            const clientId = process.env.NEXT_PUBLIC_STRIPE_CLIENT_ID;
+            const redirectUri = `${window.location.origin}/api/integrations/stripe/callback`;
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setOauthUrl(
+                `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${clientId}&scope=read_write&redirect_uri=${encodeURIComponent(
+                    redirectUri
+                )}`
+            );
+        }
     }, []);
 
     if (!oauthUrl) {

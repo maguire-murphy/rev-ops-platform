@@ -24,6 +24,8 @@ export class MrrService {
         interval: string;
         intervalCount?: number;
         effectiveDate?: Date;
+        subscriptionId?: string; // Optional: ID of the subscription if known (e.g. for new subs)
+        dryRun?: boolean; // If true, returns the movement data instead of creating it
     }) {
         const {
             stripeSubscriptionId,
@@ -33,6 +35,8 @@ export class MrrService {
             interval,
             intervalCount = 1,
             effectiveDate = new Date(),
+            subscriptionId,
+            dryRun = false,
         } = data;
 
         // 1. Find Customer and Organization
@@ -86,31 +90,29 @@ export class MrrService {
 
         // 5. Record Movement (if there is a change)
         if (movementType && mrrDelta !== 0) {
+            const movementData = {
+                organizationId,
+                customerId: customer.id,
+                subscriptionId: currentSubscription?.id || subscriptionId,
+                movementType,
+                mrrAmount: Math.abs(mrrDelta),
+                previousMrr,
+                newMrr,
+                effectiveDate,
+            };
+
+            if (dryRun) {
+                return movementData;
+            }
+
             await db.mrrMovement.create({
-                data: {
-                    organizationId,
-                    customerId: customer.id,
-                    subscriptionId: currentSubscription?.id, // Might be null if new, but we usually create sub first? 
-                    // Actually, we should probably ensure the subscription exists or at least link it if possible.
-                    // For 'new', the subscription record might not exist yet if we run this BEFORE creating it.
-                    // Strategy: Run this AFTER creating/updating the subscription? 
-                    // If we run AFTER, 'currentSubscription' will be the NEW state.
-                    // So we must rely on 'previous_attributes' from Stripe webhook or store 'previousMrr' before update.
-
-                    // REVISED STRATEGY: 
-                    // We will assume this service is called *before* the local DB update, OR we pass 'previousMrr' explicitly.
-                    // But for now, let's assume we fetch the *existing* record which represents the *old* state.
-
-                    movementType,
-                    mrrAmount: Math.abs(mrrDelta),
-                    previousMrr,
-                    newMrr,
-                    effectiveDate,
-                },
+                data: movementData,
             });
             console.log(`MRR Movement recorded: ${movementType} (${mrrDelta}) for ${stripeSubscriptionId}`);
+            return movementData;
         } else {
             console.log(`No MRR change for ${stripeSubscriptionId} (Delta: ${mrrDelta})`);
+            return null;
         }
     }
 

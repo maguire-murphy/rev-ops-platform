@@ -17,9 +17,10 @@ export async function POST(req: NextRequest) {
             signature,
             process.env.STRIPE_WEBHOOK_SECRET!
         );
-    } catch (err: any) {
-        console.error(`Webhook signature verification failed: ${err.message}`);
-        return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
+    } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : "Unknown error";
+        console.error(`Webhook signature verification failed: ${errorMessage}`);
+        return new NextResponse(`Webhook Error: ${errorMessage}`, { status: 400 });
     }
 
     try {
@@ -61,6 +62,7 @@ export async function POST(req: NextRequest) {
 
                 // 2. Calculate MRR Movement (BEFORE updating subscription)
                 // We need to pass the NEW state from the webhook
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const subAny = subscription as any;
                 const items = subAny.items.data;
                 const price = items[0]?.price;
@@ -80,6 +82,7 @@ export async function POST(req: NextRequest) {
 
                 // 3. Sync Subscription (Update/Create)
                 await db.subscription.upsert({
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     where: { stripeSubscriptionId: subAny.id } as any,
                     create: {
                         id: crypto.randomUUID(),

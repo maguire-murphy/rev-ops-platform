@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, LineChart, ShieldCheck } from "lucide-react";
+import { BarChart3, LineChart, ShieldCheck } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -14,9 +14,15 @@ export default function LandingPage() {
         <nav className="flex gap-4">
           <Link
             href="/login"
+            className="text-sm font-semibold leading-6 text-slate-900 px-4 py-2"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/signup"
             className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
           >
-            Login
+            Sign Up
           </Link>
         </nav>
       </header>
@@ -32,7 +38,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                href="/login"
+                href="/signup"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get started

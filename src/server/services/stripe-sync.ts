@@ -73,12 +73,27 @@ export class StripeSyncService {
 
             if (!customer) continue;
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const subAny = sub as any;
             const items = subAny.items.data;
-            const price = items[0]?.price;
-            const amount = price?.unit_amount || 0;
+            const firstItem = items[0];
+            const price = firstItem?.price;
+            const quantity = firstItem?.quantity || 1; // Get quantity (seats)
+            const unitAmount = price?.unit_amount || 0;
+            const amount = unitAmount * quantity; // Total amount = unit price × quantity
             const interval = price?.recurring?.interval || "month";
             const intervalCount = price?.recurring?.interval_count || 1;
+
+            // Check if subscription exists
+            const existingSub = await db.subscription.findFirst({
+                where: { stripeSubscriptionId: subAny.id }
+            });
+
+            const startedAt = subAny.start_date ? new Date(subAny.start_date * 1000) : new Date();
+
+            // For new subscriptions (backfill), use the start date.
+            // For existing subscriptions (updates), use today.
+            const effectiveDate = existingSub ? new Date() : startedAt;
 
             // Calculate MRR movement BEFORE updating the subscription in DB
             // This ensures we detect "New" subscriptions (not in DB yet) correctly
@@ -90,22 +105,20 @@ export class StripeSyncService {
                     amount,
                     interval,
                     intervalCount,
-                    effectiveDate: new Date(), // Use today for sync to populate dashboard immediately
+                    effectiveDate: effectiveDate,
                 });
             }
 
-            // Check if subscription exists
-            const existingSub = await db.subscription.findFirst({
-                where: { stripeSubscriptionId: subAny.id }
-            });
+            const currentPeriodStart = subAny.current_period_start ? new Date(subAny.current_period_start * 1000) : new Date();
+            const currentPeriodEnd = subAny.current_period_end ? new Date(subAny.current_period_end * 1000) : new Date();
 
             const subData = {
                 status: subAny.status,
                 amount,
                 billingInterval: interval,
                 billingIntervalCount: intervalCount,
-                currentPeriodStart: new Date(subAny.current_period_start * 1000),
-                currentPeriodEnd: new Date(subAny.current_period_end * 1000),
+                currentPeriodStart,
+                currentPeriodEnd,
             };
 
             if (existingSub) {
@@ -117,23 +130,17 @@ export class StripeSyncService {
                 const createData = {
                     id: crypto.randomUUID(),
                     organizationId,
-                    // customerId: customer.id,
+                    customerId: customer.id,
                     stripeSubscriptionId: subAny.id,
-                    // stripePriceId: price?.id,
-                    // currency: price?.currency,
-                    // startedAt: new Date(subAny.start_date * 1000),
-                    // ...subData
-                    amount: Number(amount),
+                    stripePriceId: price?.id,
+                    currency: price?.currency,
+                    startedAt,
+                    ...subData
                 };
-                console.log("Creating subscription with MINIMAL data:", JSON.stringify(createData, null, 2));
-                try {
-                    await db.subscription.create({
-                        data: createData,
-                    });
-                } catch (e) {
-                    console.error("Failed to create subscription:", e);
-                    throw e;
-                }
+
+                await db.subscription.create({
+                    data: createData,
+                });
             }
         }
 

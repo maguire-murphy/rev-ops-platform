@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/server/db/client";
 import { MrrService } from "@/server/services/mrr-service";
 
-export async function GET(req: Request) {
+export async function GET() {
     try {
         // In a real app, verify a secret key header here
         // const authHeader = req.headers.get('authorization');

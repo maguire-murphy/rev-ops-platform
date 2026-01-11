@@ -27,50 +27,52 @@ export async function GET(req: NextRequest) {
     }
 
     try {
+        // Fetch user's organizationId from database
+        const user = await db.user.findUnique({
+            where: { id: session.user.id },
+            select: { organizationId: true },
+        });
+
+        if (!user?.organizationId) {
+            console.error("User has no organization:", session.user.id);
+            return NextResponse.redirect(
+                new URL("/settings?error=no_organization", req.url)
+            );
+        }
+
         const tokenResponse = await exchangeStripeToken(code);
         console.log("Stripe Token Response:", JSON.stringify(tokenResponse, null, 2));
 
-        // 1. Ensure Organization exists FIRST
-        // Use a fixed UUID for the default organization
-        const DEFAULT_ORG_ID = "00000000-0000-0000-0000-000000000000";
-        let orgId = DEFAULT_ORG_ID;
-
-        // If user already has an org, use it
-        if ((session.user as any).organizationId) {
-            orgId = (session.user as any).organizationId;
-        } else {
-            // Otherwise check/create default org
-            const orgExists = await db.organization.findUnique({
-                where: { id: DEFAULT_ORG_ID }
-            });
-
-            if (!orgExists) {
-                await db.organization.create({
-                    data: {
-                        id: DEFAULT_ORG_ID,
-                        name: "My Organization",
-                        slug: "my-org"
-                    }
-                });
-
-                // Link user to organization
-                await db.user.update({
-                    where: { id: session.user.id },
-                    data: { organizationId: DEFAULT_ORG_ID }
-                });
-            }
-        }
-
-        // 2. Create Integration
-        await db.integration.create({
-            data: {
-                organizationId: orgId,
+        // Check if integration already exists for this org
+        const existingIntegration = await db.integration.findFirst({
+            where: {
+                organizationId: user.organizationId,
                 provider: "stripe",
-                stripeAccountId: tokenResponse.stripe_user_id,
-                accessTokenEncrypted: tokenResponse.access_token!, // In a real app, encrypt this!
-                refreshTokenEncrypted: tokenResponse.refresh_token,
             },
         });
+
+        if (existingIntegration) {
+            // Update existing integration
+            await db.integration.update({
+                where: { id: existingIntegration.id },
+                data: {
+                    stripeAccountId: tokenResponse.stripe_user_id,
+                    accessTokenEncrypted: tokenResponse.access_token!, // In a real app, encrypt this!
+                    refreshTokenEncrypted: tokenResponse.refresh_token,
+                },
+            });
+        } else {
+            // Create new integration
+            await db.integration.create({
+                data: {
+                    organizationId: user.organizationId,
+                    provider: "stripe",
+                    stripeAccountId: tokenResponse.stripe_user_id,
+                    accessTokenEncrypted: tokenResponse.access_token!, // In a real app, encrypt this!
+                    refreshTokenEncrypted: tokenResponse.refresh_token,
+                },
+            });
+        }
 
         return NextResponse.redirect(
             new URL("/settings?success=stripe_connected", req.url)
