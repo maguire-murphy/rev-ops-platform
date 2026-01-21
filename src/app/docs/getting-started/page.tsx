@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Getting Started with Beacon",
-    description: "Step-by-step guide to set up your Beacon account, connect Stripe and HubSpot, and start tracking your SaaS revenue metrics.",
+    title: "Getting Started",
+    description: "Step-by-step guide to set up the platform, connect Stripe and HubSpot, and start tracking your SaaS revenue metrics.",
     path: "/docs/getting-started",
 });
 
@@ -20,7 +20,7 @@ export default function GettingStartedPage() {
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                    Getting Started with Beacon
+                    Getting Started
                 </h1>
                 <p className="mt-4 text-lg text-slate-600">
                     Follow this guide to set up your account and start tracking your SaaS revenue metrics in minutes.
@@ -35,7 +35,7 @@ export default function GettingStartedPage() {
                             Create Your Account
                         </h2>
                         <p>
-                            Start by creating a free Beacon account. You can sign up with your email or use Google authentication for faster setup.
+                            Start by creating an account. You can sign up with your email or use Google authentication for faster setup.
                         </p>
                         <ol>
                             <li>Visit the <Link href="/signup">signup page</Link></li>
@@ -64,14 +64,14 @@ export default function GettingStartedPage() {
                             Connect Stripe
                         </h2>
                         <p>
-                            Stripe integration is the foundation of your revenue analytics. Beacon syncs your subscription data, customer information, and MRR metrics.
+                            Stripe integration is the foundation of your revenue analytics. The platform syncs your subscription data, customer information, and MRR metrics.
                         </p>
                         <ol>
                             <li>From your dashboard, click "Connect Stripe" in the onboarding wizard</li>
                             <li>You'll be redirected to Stripe's secure OAuth flow</li>
                             <li>Select the Stripe account you want to connect</li>
-                            <li>Authorize Beacon to access your subscription and customer data</li>
-                            <li>You'll be redirected back to Beacon, where the initial sync will begin</li>
+                            <li>Authorize the platform to access your subscription and customer data</li>
+                            <li>You'll be redirected back, where the initial sync will begin</li>
                         </ol>
                         <div className="not-prose my-6">
                             <Link
@@ -82,7 +82,7 @@ export default function GettingStartedPage() {
                                 <span className="text-sm font-medium">Detailed Stripe integration guide</span>
                             </Link>
                         </div>
-                        <h3>What data does Beacon access?</h3>
+                        <h3>What data does the platform access?</h3>
                         <ul>
                             <li>Customer information (names, emails, IDs)</li>
                             <li>Subscription data (plans, status, pricing)</li>
@@ -90,7 +90,7 @@ export default function GettingStartedPage() {
                             <li>Product and price information</li>
                         </ul>
                         <p>
-                            <strong>Note:</strong> Beacon does not access or store credit card numbers or sensitive payment methods.
+                            <strong>Note:</strong> The platform does not access or store credit card numbers or sensitive payment methods.
                         </p>
                     </section>
 
@@ -107,8 +107,8 @@ export default function GettingStartedPage() {
                         <ol>
                             <li>Click "Connect HubSpot" from the onboarding wizard</li>
                             <li>Sign in to your HubSpot account</li>
-                            <li>Grant Beacon permission to access contacts and deals</li>
-                            <li>Map your HubSpot properties to Beacon fields (if needed)</li>
+                            <li>Grant permission to access contacts and deals</li>
+                            <li>Map your HubSpot properties to platform fields (if needed)</li>
                         </ol>
                         <div className="not-prose my-6">
                             <Link
@@ -190,7 +190,7 @@ export default function GettingStartedPage() {
                         <ul>
                             <li>Check our <Link href="/faq">FAQ page</Link> for quick answers</li>
                             <li>Browse the <Link href="/docs">full documentation</Link></li>
-                            <li>Email support at <a href="mailto:support@beacon.com">support@beacon.com</a></li>
+                            <li>Email <a href="mailto:maguire.murphy@live.com">maguire.murphy@live.com</a></li>
                         </ul>
                     </section>
                 </div>

@@ -7,13 +7,27 @@ import { encrypt } from "@/server/utils/encryption";
 export async function GET(req: NextRequest) {
     const code = req.nextUrl.searchParams.get("code");
     const error = req.nextUrl.searchParams.get("error");
+    const state = req.nextUrl.searchParams.get("state");
+
+    // Determine redirect base based on state
+    let errorRedirectBase = `${process.env.NEXT_PUBLIC_APP_URL}/settings/integrations`;
+    if (state) {
+        try {
+            const parsedState = JSON.parse(decodeURIComponent(state));
+            if (parsedState.source === "onboarding") {
+                errorRedirectBase = `${process.env.NEXT_PUBLIC_APP_URL}/onboarding`;
+            }
+        } catch (e) {
+            // Ignore parse errors
+        }
+    }
 
     if (error) {
-        return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL}/settings/integrations?error=${error}`);
+        return NextResponse.redirect(`${errorRedirectBase}?error=${error}`);
     }
 
     if (!code) {
-        return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL}/settings/integrations?error=no_code`);
+        return NextResponse.redirect(`${errorRedirectBase}?error=no_code`);
     }
 
     try {

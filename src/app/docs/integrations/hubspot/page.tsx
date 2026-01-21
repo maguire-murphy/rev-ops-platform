@@ -5,7 +5,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "HubSpot Integration Guide",
-    description: "Connect HubSpot to Beacon to correlate sales pipeline data with revenue metrics and track deal progression.",
+    description: "Connect HubSpot to correlate sales pipeline data with revenue metrics and track deal progression.",
     path: "/docs/integrations/hubspot",
 });
 
@@ -29,7 +29,7 @@ export default function HubSpotIntegrationPage() {
                 <div className="prose prose-slate mt-12 max-w-none">
                     <h2>Overview</h2>
                     <p>
-                        The HubSpot integration brings CRM data into Beacon, allowing you to:
+                        The HubSpot integration brings CRM data into the platform, allowing you to:
                     </p>
                     <ul>
                         <li>Track deal progression and close rates</li>
@@ -40,12 +40,12 @@ export default function HubSpotIntegrationPage() {
 
                     <h2>Connecting HubSpot</h2>
                     <ol>
-                        <li>Navigate to Settings → Integrations in Beacon</li>
+                        <li>Navigate to Settings → Integrations in the platform</li>
                         <li>Click "Connect HubSpot"</li>
                         <li>Sign in to your HubSpot account (if not already signed in)</li>
-                        <li>Review the permissions Beacon is requesting</li>
-                        <li>Click "Grant access" to authorize Beacon</li>
-                        <li>You'll be redirected back to Beacon</li>
+                        <li>Review the permissions the platform is requesting</li>
+                        <li>Click "Grant access" to authorize the platform</li>
+                        <li>You'll be redirected back to the platform</li>
                     </ol>
 
                     <h2>What Data is Synced?</h2>
@@ -78,14 +78,14 @@ export default function HubSpotIntegrationPage() {
 
                     <h2>Matching Customers</h2>
                     <p>
-                        Beacon automatically matches HubSpot contacts with Stripe customers using:
+                        the platform automatically matches HubSpot contacts with Stripe customers using:
                     </p>
                     <ol>
                         <li>Email address (primary matching method)</li>
                         <li>Company name (for business accounts)</li>
                     </ol>
                     <p>
-                        When a match is found, you'll see HubSpot deal information on the customer detail page in Beacon.
+                        When a match is found, you'll see HubSpot deal information on the customer detail page in the platform.
                     </p>
 
                     <h2>Pipeline Intelligence</h2>
@@ -99,7 +99,7 @@ export default function HubSpotIntegrationPage() {
                         <li>Identify which lead sources convert to revenue</li>
                     </ul>
                     <p>
-                        Access these insights from the "Pipeline" section in your Beacon dashboard.
+                        Access these insights from the "Pipeline" section in your the platform dashboard.
                     </p>
 
                     <h2>Ongoing Sync</h2>
@@ -114,7 +114,7 @@ export default function HubSpotIntegrationPage() {
                     <ol>
                         <li>Verify you have deals in your HubSpot account</li>
                         <li>Check that your HubSpot account has a sales pipeline configured</li>
-                        <li>Ensure Beacon has permission to access deals (check Settings → Integrations)</li>
+                        <li>Ensure the platform has permission to access deals (check Settings → Integrations)</li>
                         <li>Wait up to 6 hours for initial sync to complete</li>
                     </ol>
 
@@ -148,7 +148,7 @@ export default function HubSpotIntegrationPage() {
                     <ul>
                         <li>Check HubSpot's <a href="https://developers.hubspot.com/" target="_blank" rel="noopener noreferrer">developer documentation<ExternalLink className="inline h-3 w-3 ml-1" /></a></li>
                         <li>Visit our <Link href="/faq">FAQ page</Link></li>
-                        <li>Email <a href="mailto:support@beacon.com">support@beacon.com</a></li>
+                        <li>Email <a href="mailto:maguire.murphy@live.com">maguire.murphy@live.com</a></li>
                     </ul>
                 </div>
             </div>

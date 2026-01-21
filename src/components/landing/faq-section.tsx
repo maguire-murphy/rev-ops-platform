@@ -4,12 +4,27 @@ const faqs = [
     {
         question: "Is my data secure?",
         answer:
-            "Yes. We use 256-bit SSL encryption and follow industry best practices. Your data is stored securely in US-based data centers. We never sell your data to third parties.",
+            "Yes. We use 256-bit SSL encryption for data in transit and AES-256 encryption at rest. We follow industry best practices including SOC 2 compliance and regular security audits.",
     },
     {
-        question: "Do I need engineering help to set this up?",
+        question: "Where is my data stored?",
         answer:
-            "Not at all. Beacon connects to Stripe and HubSpot via secure OAuth. It takes just a few clicks and requires no code or technical knowledge.",
+            "Your data is stored securely in US-based data centers operated by our trusted infrastructure partners. We use encrypted databases with automatic backups and disaster recovery.",
+    },
+    {
+        question: "Do you sell my data to third parties?",
+        answer:
+            "Absolutely not. We never sell, share, or monetize your data. Your business data belongs to you. We only use it to provide you with analytics and insights within the platform.",
+    },
+    {
+        question: "What integrations do you support?",
+        answer:
+            "This platform currently integrates with Stripe (for revenue data) and HubSpot (for pipeline data). Additional integrations could be added for Salesforce and Pipedrive.",
+    },
+    {
+        question: "How long does setup take?",
+        answer:
+            "Most users are up and running in under 5 minutes. Just connect your Stripe account with one click, and your MRR metrics appear instantly. No engineering or technical knowledge required.",
     },
     {
         question: "Can I cancel anytime?",
@@ -17,19 +32,14 @@ const faqs = [
             "Absolutely. There are no long-term contracts for monthly plans. You can cancel your subscription at any time from your dashboard.",
     },
     {
-        question: "What happens if I exceed my plan limits?",
-        answer:
-            "We'll notify you if you're approaching your ARR limit. You can choose to upgrade to the next tier or we'll pause data syncing until you do. We won't charge you extra automatically.",
-    },
-    {
         question: "Do you offer a free trial?",
         answer:
             "Yes! Our Free plan is free forever for up to $120K ARR. For larger plans, we offer a 14-day free trial so you can test the advanced features risk-free.",
     },
     {
-        question: "How does the HubSpot integration work?",
+        question: "What payment methods do you accept?",
         answer:
-            "We sync your Deals and Companies from HubSpot to match them with your Stripe customers. This allows us to show you pipeline velocity, win rates, and revenue forecasts based on real deal data.",
+            "We accept all major credit cards (Visa, Mastercard, American Express, Discover) through Stripe. We bill monthly or annually, with a 20% discount on annual plans.",
     },
 ];
 

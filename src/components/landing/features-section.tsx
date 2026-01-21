@@ -10,7 +10,7 @@ export function FeaturesSection() {
                         A complete operating system for your revenue
                     </p>
                     <p className="mt-6 text-lg leading-8 text-slate-600">
-                        Beacon replaces your messy spreadsheets with a real-time, automated revenue engine.
+                        Replace messy spreadsheets with a real-time, automated revenue dashboard.
                     </p>
                 </div>
                 <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

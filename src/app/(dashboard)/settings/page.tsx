@@ -4,7 +4,7 @@ import { ConnectStripeButton } from "@/components/integrations/connect-stripe-bu
 import { SyncStripeButton } from "@/components/integrations/sync-stripe-button";
 import { ConnectHubSpotButton } from "@/components/integrations/connect-hubspot-button";
 import { SyncHubSpotButton } from "@/components/integrations/sync-hubspot-button";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Lock } from "lucide-react";
 
 import { DisconnectButton } from "@/components/integrations/disconnect-button";
 
@@ -41,6 +41,11 @@ export default async function SettingsPage(props: {
     const isHubSpotConnected = !!hubspotIntegration;
     const success = searchParams?.success;
     const error = searchParams?.error;
+    
+    // Check if integrations are demo-locked
+    const isStripeDemoLocked = integration?.metadata && typeof integration.metadata === 'object' && 'locked' in integration.metadata && integration.metadata.locked === true;
+    const isHubSpotDemoLocked = hubspotIntegration?.metadata && typeof hubspotIntegration.metadata === 'object' && 'locked' in hubspotIntegration.metadata && hubspotIntegration.metadata.locked === true;
+    const isDemoMode = isStripeDemoLocked || isHubSpotDemoLocked;
 
     return (
         <div className="space-y-6">
@@ -88,6 +93,23 @@ export default async function SettingsPage(props: {
                 </div>
             )}
 
+            {isDemoMode && (
+                <div className="rounded-md bg-amber-50 border border-amber-200 p-4">
+                    <div className="flex">
+                        <div className="flex-shrink-0">
+                            <Lock className="h-5 w-5 text-amber-500" aria-hidden="true" />
+                        </div>
+                        <div className="ml-3">
+                            <h3 className="text-sm font-medium text-amber-800">Demo Mode</h3>
+                            <p className="mt-1 text-sm text-amber-700">
+                                This is a demo environment with pre-configured integrations. 
+                                Integration settings are locked to preserve the demo experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="rounded-xl border bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-medium leading-6 text-slate-900">Integrations</h3>
                 <div className="mt-4 space-y-4">
@@ -112,8 +134,16 @@ export default async function SettingsPage(props: {
                                     <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
                                         Connected
                                     </span>
-                                    <SyncStripeButton />
-                                    <DisconnectButton provider="stripe" />
+                                    {isStripeDemoLocked ? (
+                                        <span className="inline-flex items-center gap-1 text-xs text-slate-500">
+                                            <Lock className="h-3 w-3" /> Demo
+                                        </span>
+                                    ) : (
+                                        <>
+                                            <SyncStripeButton />
+                                            <DisconnectButton provider="stripe" />
+                                        </>
+                                    )}
                                 </div>
                             ) : (
                                 <ConnectStripeButton />
@@ -142,8 +172,16 @@ export default async function SettingsPage(props: {
                                     <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
                                         Connected
                                     </span>
-                                    <SyncHubSpotButton />
-                                    <DisconnectButton provider="hubspot" />
+                                    {isHubSpotDemoLocked ? (
+                                        <span className="inline-flex items-center gap-1 text-xs text-slate-500">
+                                            <Lock className="h-3 w-3" /> Demo
+                                        </span>
+                                    ) : (
+                                        <>
+                                            <SyncHubSpotButton />
+                                            <DisconnectButton provider="hubspot" />
+                                        </>
+                                    )}
                                 </div>
                             ) : (
                                 <ConnectHubSpotButton />

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Beacon - Revenue Intelligence for SaaS";
+export const alt = "RevOps Analytics Platform";
 export const size = {
     width: 1200,
     height: 630,
@@ -42,23 +42,23 @@ export default async function Image() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            fontSize: "64px",
+                            fontSize: "48px",
                             fontWeight: "bold",
                         }}
                     >
-                        B
+                        RA
                     </div>
-                    <div style={{ fontWeight: "bold", fontSize: "96px" }}>Beacon</div>
+                    <div style={{ fontWeight: "bold", fontSize: "72px" }}>RevOps Analytics</div>
                 </div>
                 <div
                     style={{
-                        fontSize: "36px",
+                        fontSize: "32px",
                         opacity: 0.9,
                         fontWeight: "400",
                         letterSpacing: "-0.5px",
                     }}
                 >
-                    Revenue Intelligence for SaaS
+                    Revenue Operations Analytics Platform
                 </div>
             </div>
         ),

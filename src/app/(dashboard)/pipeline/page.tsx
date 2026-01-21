@@ -2,15 +2,59 @@
 
 import { api } from "@/trpc/react";
 import { PipelineBoard } from "@/components/pipeline/pipeline-board";
-import { Loader2, DollarSign, Briefcase, TrendingUp, BarChart3, type LucideIcon } from "lucide-react";
+import { Loader2, DollarSign, Briefcase, TrendingUp, BarChart3, Link2, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ErrorState } from "@/components/ui/error-state";
 
 export default function PipelinePage() {
-    const { data: metrics, isLoading } = api.deals.getMetrics.useQuery();
+    const { data: metrics, isLoading, error, refetch } = api.deals.getMetrics.useQuery();
+    const { data: integrationStatus } = api.integrations.getStatus.useQuery();
 
     if (isLoading) {
         return (
             <div className="flex h-full items-center justify-center">
                 <Loader2 className="h-8 w-8 animate-spin text-slate-400" />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex flex-col h-full space-y-6 p-6">
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900">Pipeline</h1>
+                <div className="rounded-xl border bg-white shadow-sm">
+                    <ErrorState
+                        title="Failed to load pipeline data"
+                        message="We couldn't load your pipeline. Please try again."
+                        onRetry={refetch}
+                    />
+                </div>
+            </div>
+        );
+    }
+
+    // Show empty state if HubSpot is not connected
+    if (!integrationStatus?.hubspotConnected) {
+        return (
+            <div className="flex flex-col h-full space-y-6 p-6">
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900">Pipeline</h1>
+                <div className="rounded-xl border bg-white p-12 shadow-sm">
+                    <div className="flex flex-col items-center justify-center text-center">
+                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#ff7a59]/10 mb-4">
+                            <Link2 className="h-8 w-8 text-[#ff7a59]" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-slate-900">Connect HubSpot to See Your Pipeline</h3>
+                        <p className="mt-2 max-w-md text-sm text-slate-600">
+                            Connect your HubSpot account to view deal stages, track pipeline value, and monitor sales velocity.
+                        </p>
+                        <Link
+                            href="/settings"
+                            className="mt-6 inline-flex items-center rounded-md bg-[#ff7a59] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#ff8f73] transition-colors"
+                        >
+                            Connect HubSpot
+                        </Link>
+                    </div>
+                </div>
             </div>
         );
     }

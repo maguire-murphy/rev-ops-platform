@@ -4,7 +4,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Cookie Policy",
-    description: "Learn about how Beacon uses cookies and similar tracking technologies. Manage your cookie preferences.",
+    description: "Learn about how this platform uses cookies and similar tracking technologies.",
     path: "/cookies",
 });
 
@@ -38,7 +38,7 @@ export default function CookiesPage() {
                     <section>
                         <h2>How We Use Cookies</h2>
                         <p>
-                            Beacon uses cookies and similar tracking technologies for the following purposes:
+                            This platform uses cookies and similar tracking technologies for the following purposes:
                         </p>
 
                         <h3>1. Essential Cookies</h3>
@@ -176,8 +176,8 @@ export default function CookiesPage() {
                         <h2>Contact Us</h2>
                         <p>
                             If you have questions about our use of cookies, please contact us at{" "}
-                            <a href="mailto:privacy@beacon.com" className="text-brand-600 hover:text-brand-700">
-                                privacy@beacon.com
+                            <a href="mailto:maguire.murphy@live.com" className="text-brand-600 hover:text-brand-700">
+                                maguire.murphy@live.com
                             </a>
                         </p>
                     </section>

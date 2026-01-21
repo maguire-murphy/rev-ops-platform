@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { Loader2, CheckCircle2, AlertCircle, XCircle } from "lucide-react";
 import { getHubSpotOAuthUrl } from "@/server/actions/integrations";
 
 interface ConnectHubSpotStepProps {
@@ -12,6 +13,19 @@ interface ConnectHubSpotStepProps {
 
 export function ConnectHubSpotStep({ onNext, onSkip, isConnected = false }: ConnectHubSpotStepProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const errorParam = searchParams.get("error");
+        if (errorParam) {
+            if (errorParam === "access_denied") {
+                setError("You canceled the HubSpot connection. You can try again or skip for now.");
+            } else {
+                setError("Failed to connect to HubSpot. Please try again.");
+            }
+        }
+    }, [searchParams]);
 
     const handleConnect = async () => {
         setIsLoading(true);
@@ -85,6 +99,22 @@ export function ConnectHubSpotStep({ onNext, onSkip, isConnected = false }: Conn
                     </button>
                 </div>
             </div>
+
+            {error && (
+                <div className="mt-6 rounded-md bg-red-50 p-4 text-left max-w-lg mx-auto" role="alert">
+                    <div className="flex">
+                        <div className="flex-shrink-0">
+                            <XCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
+                        </div>
+                        <div className="ml-3">
+                            <h3 className="text-sm font-medium text-red-800">Connection Error</h3>
+                            <div className="mt-2 text-sm text-red-700">
+                                <p>{error}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <div className="mt-8 rounded-md bg-blue-50 p-4 text-left max-w-lg mx-auto">
                 <div className="flex">

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
-    title: "Contact Us",
-    description: "Get in touch with the Beacon team. Email us for support, questions, or feedback about our revenue intelligence platform.",
+    title: "Contact",
+    description: "Get in touch about this portfolio project.",
     path: "/contact",
 });
 
@@ -20,114 +20,99 @@ export default function ContactPage() {
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                    Contact Us
+                    Contact
                 </h1>
                 <p className="mt-4 text-lg text-slate-600">
-                    We're here to help. Get in touch with our team.
+                    Interested in this project or want to connect? Here's how to reach me.
                 </p>
 
-                <div className="mt-12 grid gap-8 md:grid-cols-2">
-                    {/* Support */}
-                    <div className="rounded-lg border border-slate-200 p-8">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-100">
+                <div className="mt-12 grid gap-8 md:grid-cols-3">
+                    {/* Email */}
+                    <a
+                        href="mailto:maguire.murphy@live.com"
+                        className="group rounded-lg border border-slate-200 p-8 hover:border-brand-300 hover:shadow-md transition-all"
+                    >
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-100 group-hover:bg-brand-200 transition-colors">
                             <Mail className="h-6 w-6 text-brand-600" />
                         </div>
                         <h2 className="mt-6 text-xl font-semibold text-slate-900">
-                            General Support
+                            Email
                         </h2>
                         <p className="mt-2 text-sm text-slate-600">
-                            Questions about your account, billing, or using Beacon? We typically respond within 24 hours.
+                            Best for detailed questions or project discussions.
                         </p>
-                        <a
-                            href="mailto:support@beacon.com"
-                            className="mt-4 inline-block text-sm font-medium text-brand-600 hover:text-brand-700"
-                        >
-                            support@beacon.com
-                        </a>
-                    </div>
+                        <p className="mt-4 text-sm font-medium text-brand-600 group-hover:text-brand-700">
+                            maguire.murphy@live.com
+                        </p>
+                    </a>
 
-                    {/* Sales */}
-                    <div className="rounded-lg border border-slate-200 p-8">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100">
-                            <Mail className="h-6 w-6 text-indigo-600" />
+                    {/* GitHub */}
+                    <a
+                        href="https://github.com/maguire-murphy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group rounded-lg border border-slate-200 p-8 hover:border-slate-400 hover:shadow-md transition-all"
+                    >
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 group-hover:bg-slate-200 transition-colors">
+                            <Github className="h-6 w-6 text-slate-700" />
                         </div>
                         <h2 className="mt-6 text-xl font-semibold text-slate-900">
-                            Sales Inquiries
+                            GitHub
                         </h2>
                         <p className="mt-2 text-sm text-slate-600">
-                            Interested in learning more about Beacon for your team? Let's talk.
+                            View this project's source code and my other work.
                         </p>
-                        <a
-                            href="mailto:hello@beacon.com"
-                            className="mt-4 inline-block text-sm font-medium text-brand-600 hover:text-brand-700"
-                        >
-                            hello@beacon.com
-                        </a>
-                    </div>
+                        <p className="mt-4 text-sm font-medium text-slate-700 group-hover:text-slate-900">
+                            github.com/maguire-murphy
+                        </p>
+                    </a>
 
-                    {/* Privacy */}
-                    <div className="rounded-lg border border-slate-200 p-8">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100">
-                            <Mail className="h-6 w-6 text-slate-600" />
+                    {/* LinkedIn */}
+                    <a
+                        href="https://linkedin.com/in/maguire-murphy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group rounded-lg border border-slate-200 p-8 hover:border-blue-300 hover:shadow-md transition-all"
+                    >
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                            <Linkedin className="h-6 w-6 text-blue-600" />
                         </div>
                         <h2 className="mt-6 text-xl font-semibold text-slate-900">
-                            Privacy & Legal
+                            LinkedIn
                         </h2>
                         <p className="mt-2 text-sm text-slate-600">
-                            Questions about privacy, data handling, or our legal policies? Contact our privacy team.
+                            Connect professionally or view my background.
                         </p>
-                        <a
-                            href="mailto:privacy@beacon.com"
-                            className="mt-4 inline-block text-sm font-medium text-brand-600 hover:text-brand-700"
-                        >
-                            privacy@beacon.com
-                        </a>
-                    </div>
-
-                    {/* Security */}
-                    <div className="rounded-lg border border-slate-200 p-8">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-100">
-                            <Mail className="h-6 w-6 text-red-600" />
-                        </div>
-                        <h2 className="mt-6 text-xl font-semibold text-slate-900">
-                            Security Issues
-                        </h2>
-                        <p className="mt-2 text-sm text-slate-600">
-                            Found a security vulnerability? Please report it responsibly to our security team.
+                        <p className="mt-4 text-sm font-medium text-blue-600 group-hover:text-blue-700">
+                            linkedin.com/in/maguire-murphy
                         </p>
-                        <a
-                            href="mailto:security@beacon.com"
-                            className="mt-4 inline-block text-sm font-medium text-brand-600 hover:text-brand-700"
-                        >
-                            security@beacon.com
-                        </a>
-                    </div>
+                    </a>
                 </div>
 
                 <div className="mt-12 rounded-lg bg-slate-50 p-8">
                     <h2 className="text-lg font-semibold text-slate-900">
-                        Before You Contact Support
+                        About This Project
                     </h2>
                     <p className="mt-2 text-sm text-slate-600">
-                        Many questions can be answered quickly by checking our resources:
+                        This RevOps Analytics Platform is a portfolio project demonstrating full-stack 
+                        development skills, API integrations, and product thinking for B2B SaaS tools.
                     </p>
-                    <ul className="mt-4 space-y-2">
-                        <li>
-                            <Link href="/docs" className="text-sm text-brand-600 hover:text-brand-700">
-                                → Documentation & Guides
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/faq" className="text-sm text-brand-600 hover:text-brand-700">
-                                → Frequently Asked Questions
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/docs/getting-started" className="text-sm text-brand-600 hover:text-brand-700">
-                                → Getting Started Guide
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+                        <Link
+                            href="/docs"
+                            className="inline-flex justify-center rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+                        >
+                            View Documentation
+                        </Link>
+                        <a
+                            href="https://github.com/maguire-murphy/revops-analytics"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50"
+                        >
+                            View Source Code
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Privacy Policy",
-    description: "Privacy Policy for Beacon. Learn how we collect, use, protect, and manage your data. GDPR and CCPA compliant.",
+    description: "Privacy Policy for the RevOps Analytics platform. Learn how we collect, use, protect, and manage your data.",
     path: "/privacy",
 });
 
@@ -29,12 +29,18 @@ export default function PrivacyPage() {
 
                 <div className="prose prose-slate mt-12 max-w-none">
                     <section>
+                        <div className="rounded-lg bg-amber-50 border border-amber-200 p-6 not-prose mb-8">
+                            <p className="text-amber-800 text-sm">
+                                <strong>Note:</strong> This is a portfolio demonstration project. This privacy policy 
+                                describes how a production version of this platform would handle data.
+                            </p>
+                        </div>
                         <h2>Introduction</h2>
                         <p>
-                            Beacon ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.
+                            This Privacy Policy explains how the RevOps Analytics Platform ("we", "our", or "us") collects, uses, discloses, and safeguards information when you use the Service.
                         </p>
                         <p>
-                            This policy applies to information we collect through our website, application, and any related services (collectively, the "Service").
+                            This policy applies to information collected through the website, application, and any related services (collectively, the "Service").
                         </p>
                     </section>
 
@@ -184,8 +190,8 @@ export default function PrivacyPage() {
                         <h3>How to Exercise Your Rights</h3>
                         <p>
                             To exercise any of these rights, please contact us at{" "}
-                            <a href="mailto:privacy@beacon.com" className="text-brand-600 hover:text-brand-700">
-                                privacy@beacon.com
+                            <a href="mailto:maguire.murphy@live.com" className="text-brand-600 hover:text-brand-700">
+                                maguire.murphy@live.com
                             </a>
                             . We will respond to your request within 30 days.
                         </p>
@@ -233,14 +239,14 @@ export default function PrivacyPage() {
                         <ul>
                             <li>
                                 <strong>Email:</strong>{" "}
-                                <a href="mailto:privacy@beacon.com" className="text-brand-600 hover:text-brand-700">
-                                    privacy@beacon.com
+                                <a href="mailto:maguire.murphy@live.com" className="text-brand-600 hover:text-brand-700">
+                                    maguire.murphy@live.com
                                 </a>
                             </li>
                             <li>
                                 <strong>General Support:</strong>{" "}
-                                <a href="mailto:support@beacon.com" className="text-brand-600 hover:text-brand-700">
-                                    support@beacon.com
+                                <a href="mailto:maguire.murphy@live.com" className="text-brand-600 hover:text-brand-700">
+                                    maguire.murphy@live.com
                                 </a>
                             </li>
                         </ul>

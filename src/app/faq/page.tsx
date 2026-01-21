@@ -4,93 +4,43 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Frequently Asked Questions",
-    description: "Get answers to common questions about Beacon, pricing, integrations, data security, and more.",
+    description: "Get answers to common questions about the RevOps Analytics platform, integrations, and data security.",
     path: "/faq",
 });
 
 export default function FAQPage() {
     const faqs = [
         {
-            category: "General",
+            category: "About This Project",
             questions: [
                 {
-                    q: "What is Beacon?",
-                    a: "Beacon is a revenue intelligence platform for B2B SaaS companies. We connect to your Stripe and HubSpot accounts to automatically track MRR, ARR, churn, retention, and pipeline metrics—giving you real-time insights into your business performance.",
+                    q: "What is this platform?",
+                    a: "This is a revenue analytics platform built as a portfolio project. It demonstrates integration with Stripe and HubSpot APIs to track MRR, ARR, churn, retention, and pipeline metrics for B2B SaaS companies.",
                 },
                 {
-                    q: "Who is Beacon for?",
-                    a: "Beacon is designed for B2B SaaS startups with $500K-$10M in ARR. It's perfect for founders, sales leaders, and heads of operations who need clear visibility into revenue metrics without building complex spreadsheets.",
+                    q: "Who would use this type of tool?",
+                    a: "This platform is designed for B2B SaaS companies in the $500K-$10M ARR range—founders, sales leaders, and operations teams who need visibility into revenue metrics without complex spreadsheets.",
                 },
                 {
-                    q: "Do I need technical skills to use Beacon?",
-                    a: "No! Beacon is designed to be user-friendly. Simply connect your Stripe and HubSpot accounts (with OAuth - no API keys needed), and your metrics populate automatically. If you can use Stripe and HubSpot, you can use Beacon.",
+                    q: "Is this a production application?",
+                    a: "This is a portfolio demonstration with working integrations. The demo environment uses sample data to showcase the platform's capabilities.",
                 },
             ],
         },
         {
-            category: "Pricing & Billing",
+            category: "Technical Implementation",
             questions: [
                 {
-                    q: "How much does Beacon cost?",
-                    a: "Beacon offers a free tier for early-stage companies. Paid plans start at $99/month. Visit our pricing page for detailed plan information.",
+                    q: "What tech stack is used?",
+                    a: "Next.js 16, React 19, TypeScript, Tailwind CSS for the frontend. tRPC, Prisma, and PostgreSQL for the backend. Stripe and HubSpot APIs for integrations.",
                 },
                 {
-                    q: "Can I start with the free tier?",
-                    a: "Yes! Our free tier includes basic MRR tracking and customer analytics. No credit card required to get started. Upgrade anytime as your needs grow.",
+                    q: "How do the integrations work?",
+                    a: "OAuth 2.0 for authentication with both Stripe and HubSpot. Webhooks provide real-time updates for subscription changes. API polling handles historical data backfill.",
                 },
                 {
-                    q: "What payment methods do you accept?",
-                    a: "We accept all major credit cards (Visa, Mastercard, American Express, Discover) through Stripe. We bill monthly or annually.",
-                },
-                {
-                    q: "Can I cancel anytime?",
-                    a: "Yes, you can cancel your subscription at any time from your account settings. Your access continues until the end of your current billing period.",
-                },
-            ],
-        },
-        {
-            category: "Integrations",
-            questions: [
-                {
-                    q: "Which integrations do you support?",
-                    a: "Currently, Beacon integrates with Stripe (for revenue data) and HubSpot (for pipeline data). We're adding more integrations soon, including Salesforce, Pipedrive, and QuickBooks.",
-                },
-                {
-                    q: "Is Stripe integration required?",
-                    a: "Yes, Stripe is required as it's the source of your subscription and revenue data. HubSpot is optional but recommended for pipeline intelligence.",
-                },
-                {
-                    q: "How often does data sync?",
-                    a: "Stripe syncs in real-time via webhooks—any subscription change appears in Beacon within seconds. HubSpot syncs every 6 hours. You can also manually trigger a sync anytime.",
-                },
-                {
-                    q: "Can I connect multiple Stripe accounts?",
-                    a: "Not currently. Beacon connects to one Stripe account per organization. If you need multi-account support, please contact us at hello@beacon.com.",
-                },
-            ],
-        },
-        {
-            category: "Data & Privacy",
-            questions: [
-                {
-                    q: "Is my data secure?",
-                    a: "Absolutely. We use industry-standard encryption (TLS 1.3) for data in transit and AES-256 encryption for data at rest. We're SOC 2 Type II compliant and follow GDPR and CCPA regulations.",
-                },
-                {
-                    q: "Who can see my data?",
-                    a: "Only you and team members you invite to your Beacon account. We never share or sell your data to third parties. See our Privacy Policy for full details.",
-                },
-                {
-                    q: "What data do you access from Stripe?",
-                    a: "We access customer information, subscription data, invoices, and products/pricing. We do NOT access or store credit card numbers or sensitive payment methods. See our Stripe Integration Guide for details.",
-                },
-                {
-                    q: "Can I export my data?",
-                    a: "Yes! You can export customer lists, metrics, and reports as CSV or Excel files from any Beacon page. Your data is always yours.",
-                },
-                {
-                    q: "What happens to my data if I cancel?",
-                    a: "Your data is preserved for 90 days after cancellation, giving you time to export if needed. After 90 days, all data is permanently deleted unless you reactivate your account.",
+                    q: "How is data security handled?",
+                    a: "OAuth tokens are encrypted at rest using AES-256. All API calls use TLS. Multi-tenant data isolation ensures organizations only see their own data.",
                 },
             ],
         },
@@ -98,37 +48,50 @@ export default function FAQPage() {
             category: "Features",
             questions: [
                 {
-                    q: "What metrics does Beacon track?",
-                    a: "Beacon tracks MRR, ARR, net revenue, churn rate (customer and revenue), retention rate, customer lifetime value (LTV), average revenue per account (ARPA), and more. All metrics update in real-time.",
+                    q: "What metrics are tracked?",
+                    a: "MRR, ARR, net revenue, churn rate (customer and revenue), retention cohorts, customer lifetime value (LTV), average revenue per account (ARPA), and pipeline analytics.",
                 },
                 {
-                    q: "Can I see individual customer health?",
-                    a: "Yes! The Customers page shows each customer's MRR, subscription status, tenure, and trend. Click any customer for detailed history, subscription changes, and payment timeline.",
+                    q: "How does the cohort analysis work?",
+                    a: "Customers are grouped by signup month. The platform tracks revenue and customer retention over time to visualize cohort performance.",
                 },
                 {
-                    q: "Do you support cohort analysis?",
-                    a: "Yes, our Metrics section includes cohort analysis to see retention and revenue patterns by signup month or other dimensions.",
-                },
-                {
-                    q: "Can I forecast revenue?",
-                    a: "Yes! The Forecast feature projects future MRR based on historical trends, churn rates, and pipeline data (if HubSpot is connected).",
+                    q: "What forecasting methods are used?",
+                    a: "Simple linear projections based on historical growth rates. Three scenarios (conservative, moderate, aggressive) allow comparison of different growth assumptions.",
                 },
             ],
         },
         {
-            category: "Support",
+            category: "Demo",
             questions: [
                 {
-                    q: "How do I get help?",
-                    a: "We offer email support at support@beacon.com. Typical response time is under 24 hours on business days. Check our Documentation for quick answers to common questions.",
+                    q: "How do I access the demo?",
+                    a: "Use the demo credentials: demo@revops.app / demo1234. The demo includes sample customers, subscriptions, MRR history, and pipeline deals.",
                 },
                 {
-                    q: "Do you offer onboarding?",
-                    a: "Yes! We provide guided onboarding for all new customers. Paid plans include a personalized onboarding call to ensure you get the most out of Beacon.",
+                    q: "Is the demo data realistic?",
+                    a: "Yes, the demo data represents a typical early-stage SaaS company with 15+ customers, various subscription plans, expansions, contractions, and churn events over 12 months.",
                 },
                 {
-                    q: "Can I request new features?",
-                    a: "Absolutely! We love feedback. Email us at hello@beacon.com with your feature requests. We actively incorporate customer suggestions into our roadmap.",
+                    q: "Can I modify the demo data?",
+                    a: "The integrations are locked in demo mode to preserve the experience. To test with real data, you would clone the repository and connect your own Stripe/HubSpot accounts.",
+                },
+            ],
+        },
+        {
+            category: "Contact",
+            questions: [
+                {
+                    q: "How can I reach the developer?",
+                    a: "Email: maguire.murphy@live.com. You can also find me on GitHub and LinkedIn. Links are in the footer.",
+                },
+                {
+                    q: "Can I use this code?",
+                    a: "This project is available under the MIT license. Feel free to explore, learn from, or adapt the code for your own projects.",
+                },
+                {
+                    q: "Is the source code available?",
+                    a: "Yes, the full source code is available on GitHub. See the README for setup instructions.",
                 },
             ],
         },
@@ -147,7 +110,7 @@ export default function FAQPage() {
                     Frequently Asked Questions
                 </h1>
                 <p className="mt-4 text-lg text-slate-600">
-                    Quick answers to common questions about Beacon.
+                    Quick answers to common questions about the platform.
                 </p>
 
                 <div className="mt-12 space-y-16">

@@ -5,7 +5,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Stripe Integration Guide",
-    description: "Learn how to connect your Stripe account to Beacon for automatic MRR tracking, customer analytics, and revenue insights.",
+    description: "Learn how to connect your Stripe account for automatic MRR tracking, customer analytics, and revenue insights.",
     path: "/docs/integrations/stripe",
 });
 
@@ -29,17 +29,17 @@ export default function StripeIntegrationPage() {
                 <div className="prose prose-slate mt-12 max-w-none">
                     <h2>Overview</h2>
                     <p>
-                        The Stripe integration is the core of Beacon's revenue analytics. It automatically syncs your subscription data, customer information, and payment history to provide real-time insights into your SaaS metrics.
+                        The Stripe integration is the core of the platform's revenue analytics. It automatically syncs your subscription data, customer information, and payment history to provide real-time insights into your SaaS metrics.
                     </p>
 
                     <h2>Connecting Stripe</h2>
                     <ol>
-                        <li>In your Beacon dashboard, navigate to Settings → Integrations</li>
+                        <li>In your the platform dashboard, navigate to Settings → Integrations</li>
                         <li>Click "Connect Stripe"</li>
                         <li>You'll be redirected to Stripe's secure authorization page</li>
                         <li>Select the Stripe account you want to connect</li>
-                        <li>Click "Connect" to authorize Beacon</li>
-                        <li>You'll be redirected back to Beacon, where the initial data sync will begin</li>
+                        <li>Click "Connect" to authorize the platform</li>
+                        <li>You'll be redirected back to the platform, where the initial data sync will begin</li>
                     </ol>
 
                     <h2>What Data isSync Synced?</h2>
@@ -76,7 +76,7 @@ export default function StripeIntegrationPage() {
 
                     <h2>Data Privacy & Security</h2>
                     <p>
-                        Beacon uses Stripe's OAuth 2.0 protocol for secure authentication. We follow these security practices:
+                        the platform uses Stripe's OAuth 2.0 protocol for secure authentication. We follow these security practices:
                     </p>
                     <ul>
                         <li>We never access or store full credit card numbers</li>
@@ -87,7 +87,7 @@ export default function StripeIntegrationPage() {
 
                     <h2>Initial Sync</h2>
                     <p>
-                        When you first connect Stripe, Beacon will sync:
+                        When you first connect Stripe, the platform will sync:
                     </p>
                     <ul>
                         <li>All active and canceled subscriptions</li>
@@ -95,16 +95,16 @@ export default function StripeIntegrationPage() {
                         <li>Invoice history for active customers</li>
                     </ul>
                     <p>
-                        Initial sync typically takes 1-5 minutes depending on your data volume. You can use Beacon while the sync completes.
+                        Initial sync typically takes 1-5 minutes depending on your data volume. You can use the platform while the sync completes.
                     </p>
 
                     <h2>Ongoing Syncing</h2>
                     <p>
-                        After the initial sync, Beacon stays up-to-date in two ways:
+                        After the initial sync, the platform stays up-to-date in two ways:
                     </p>
                     <h3>1. Webhooks (Real-time)</h3>
                     <p>
-                        Beacon automatically sets up Stripe webhooks for instant updates when:
+                        the platform automatically sets up Stripe webhooks for instant updates when:
                     </p>
                     <ul>
                         <li>A customer subscribes or cancels</li>
@@ -115,7 +115,7 @@ export default function StripeIntegrationPage() {
 
                     <h3>2. Daily Background Sync</h3>
                     <p>
-                        Every 24 hours, Beacon performs a full sync to ensure data accuracy and catch any events that may have been missed.
+                        Every 24 hours, the platform performs a full sync to ensure data accuracy and catch any events that may have been missed.
                     </p>
 
                     <h2>Troubleshooting</h2>
@@ -131,7 +131,7 @@ export default function StripeIntegrationPage() {
 
                     <h3>Missing Customers</h3>
                     <p>
-                        Beacon only syncs customers who have (or had) active subscriptions. One-time payment customers won't appear in your metrics.
+                        the platform only syncs customers who have (or had) active subscriptions. One-time payment customers won't appear in your metrics.
                     </p>
 
                     <h3>Disconnecting Stripe</h3>
@@ -144,7 +144,7 @@ export default function StripeIntegrationPage() {
                         <li>Confirm disconnection</li>
                     </ol>
                     <p>
-                        <strong>Note:</strong> Your historical data in Beacon will be preserved, but new updates won't be synced until you reconnect.
+                        <strong>Note:</strong> Your historical data in the platform will be preserved, but new updates won't be synced until you reconnect.
                     </p>
 
                     <h2>Need Help?</h2>
@@ -154,7 +154,7 @@ export default function StripeIntegrationPage() {
                     <ul>
                         <li>Check Stripe's <a href="https://stripe.com/docs/connect" target="_blank" rel="noopener noreferrer">OAuth documentation<ExternalLink className="inline h-3 w-3 ml-1" /></a></li>
                         <li>Visit our <Link href="/faq">FAQ page</Link></li>
-                        <li>Email <a href="mailto:support@beacon.com">support@beacon.com</a></li>
+                        <li>Email <a href="mailto:maguire.murphy@live.com">maguire.murphy@live.com</a></li>
                     </ul>
                 </div>
             </div>

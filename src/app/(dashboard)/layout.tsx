@@ -4,6 +4,15 @@ import { db } from "@/server/db/client";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { MobileMenuProvider } from "@/components/layout/mobile-menu-context";
+import { Metadata } from "next";
+
+// Prevent search engines from indexing dashboard pages
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
 
 export default async function DashboardLayout({
     children,

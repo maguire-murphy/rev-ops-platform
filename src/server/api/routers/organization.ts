@@ -86,6 +86,19 @@ export const organizationRouter = createTRPCRouter({
         });
     }),
 
+    updateProfile: protectedProcedure
+        .input(z.object({
+            name: z.string().min(1, "Name is required"),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            const userId = ctx.session.user.id;
+            
+            return ctx.db.user.update({
+                where: { id: userId },
+                data: { name: input.name },
+            });
+        }),
+
     inviteMember: protectedProcedure
         .input(z.object({
             email: z.string().email(),

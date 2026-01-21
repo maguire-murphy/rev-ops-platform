@@ -31,10 +31,12 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
         }
     };
 
+    const firstName = session?.user?.name?.split(" ")[0];
+
     return (
         <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                Welcome to Beacon!
+                {firstName ? `Welcome, ${firstName}!` : "Welcome!"}
             </h2>
             <p className="mt-4 text-lg text-slate-600">
                 We're excited to help you get a clear view of your revenue metrics.

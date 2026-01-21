@@ -25,7 +25,7 @@ export function SocialProof() {
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />)}
                                 </div>
                                 <p className="text-lg leading-7 text-slate-700">
-                                    "Beacon gave us clarity on our MRR that we never had with spreadsheets. It's now the first tab I open every morning."
+                                    "This platform gives clarity on MRR that we never had with spreadsheets. It's the first tab I open every morning."
                                 </p>
                             </div>
                             <div className="mt-6 flex items-center gap-x-4">

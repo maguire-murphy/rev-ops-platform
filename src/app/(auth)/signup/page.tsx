@@ -81,11 +81,11 @@ export default function SignupPage() {
     return (
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="flex justify-center">
+                <Link href="/" className="flex justify-center">
                     <div className="h-12 w-12 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-2xl font-bold">
                         B
                     </div>
-                </div>
+                </Link>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900">
                     Create your company workspace
                 </h2>
@@ -205,20 +205,31 @@ export default function SignupPage() {
                             <div className="ml-3 text-sm leading-6">
                                 <label htmlFor="terms" className="font-medium text-slate-900">
                                     I agree to the{" "}
-                                    <Link href="/terms" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                    <a href="/terms" target="_blank" rel="noopener noreferrer" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                         Terms of Service
-                                    </Link>{" "}
+                                    </a>{" "}
                                     and{" "}
-                                    <Link href="/privacy" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                    <a href="/privacy" target="_blank" rel="noopener noreferrer" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                         Privacy Policy
-                                    </Link>
+                                    </a>
                                 </label>
                             </div>
                         </div>
 
                         {error && (
-                            <div className="rounded-md bg-red-50 p-4">
+                            <div className="rounded-md bg-red-50 p-4" role="alert" aria-live="polite">
                                 <p className="text-sm text-red-800">{error}</p>
+                                {error.includes("already exists") && (
+                                    <p className="mt-2 text-sm text-red-700">
+                                        <Link href="/login" className="font-medium underline hover:text-red-800">
+                                            Sign in instead
+                                        </Link>{" "}
+                                        or{" "}
+                                        <Link href="/forgot-password" className="font-medium underline hover:text-red-800">
+                                            reset your password
+                                        </Link>
+                                    </p>
+                                )}
                             </div>
                         )}
 

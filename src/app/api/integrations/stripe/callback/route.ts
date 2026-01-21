@@ -13,16 +13,30 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
     const code = searchParams.get("code");
     const error = searchParams.get("error");
+    const state = searchParams.get("state");
+
+    // Determine redirect base based on state
+    let errorRedirectBase = "/settings";
+    if (state) {
+        try {
+            const parsedState = JSON.parse(decodeURIComponent(state));
+            if (parsedState.source === "onboarding") {
+                errorRedirectBase = "/onboarding";
+            }
+        } catch (e) {
+            // Ignore parse errors
+        }
+    }
 
     if (error) {
         return NextResponse.redirect(
-            new URL("/settings?error=" + error, req.url)
+            new URL(`${errorRedirectBase}?error=${error}`, req.url)
         );
     }
 
     if (!code) {
         return NextResponse.redirect(
-            new URL("/settings?error=missing_code", req.url)
+            new URL(`${errorRedirectBase}?error=missing_code`, req.url)
         );
     }
 

@@ -1,0 +1,42 @@
+# RevOps Analytics robots.txt
+
+User-agent: *
+Allow: /
+Allow: /terms
+Allow: /privacy
+Allow: /cookies
+Allow: /docs
+Allow: /docs/getting-started
+Allow: /docs/integrations/stripe
+Allow: /docs/integrations/hubspot
+Allow: /faq
+Allow: /contact
+
+# Disallow app/dashboard pages
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /customers
+Disallow: /customers/*
+Disallow: /metrics
+Disallow: /metrics/*
+Disallow: /pipeline
+Disallow: /pipeline/*
+Disallow: /forecast
+Disallow: /forecast/*
+Disallow: /settings
+Disallow: /settings/*
+Disallow: /onboarding
+Disallow: /onboarding/*
+
+# Disallow API routes
+Disallow: /api/
+Disallow: /api/*
+
+# Disallow auth pages (may contain sensitive form data)
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+
+# Sitemap location
+Sitemap: /sitemap.xml

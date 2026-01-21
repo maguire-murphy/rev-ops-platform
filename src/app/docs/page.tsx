@@ -5,7 +5,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Documentation",
-    description: "Learn how to use Beacon to track your SaaS revenue metrics. Guides for setup, integrations, features, and more.",
+    description: "Documentation for the RevOps Analytics platform. Guides for setup, integrations, features, and more.",
     path: "/docs",
 });
 
@@ -23,7 +23,7 @@ export default function DocsPage() {
                     Documentation
                 </h1>
                 <p className="mt-4 text-lg text-slate-600">
-                    Everything you need to get started with Beacon and tracking your SaaS metrics.
+                    Everything you need to get started with the platform and tracking your SaaS metrics.
                 </p>
 
                 <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -83,7 +83,7 @@ export default function DocsPage() {
                             FAQ
                         </h2>
                         <p className="mt-2 text-sm text-slate-600">
-                            Answers to commonly asked questions about Beacon, billing, data privacy, and more.
+                            Answers to common questions about this project, features, and technical implementation.
                         </p>
                         <p className="mt-4 text-sm font-medium text-brand-600">
                             View FAQ →

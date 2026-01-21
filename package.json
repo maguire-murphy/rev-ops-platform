@@ -1,12 +1,35 @@
 {
-  "name": "temp_setup",
-  "version": "0.1.0",
+  "name": "rev-ops-platform",
+  "version": "1.0.0",
+  "description": "Revenue Operations Analytics Platform - Integrated Stripe and HubSpot metrics for early-stage SaaS",
+  "author": "Maguire Murphy <maguire.murphy@live.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maguire-murphy/rev-ops-platform.git"
+  },
+  "homepage": "https://github.com/maguire-murphy/rev-ops-platform#readme",
+  "keywords": [
+    "saas",
+    "revenue-operations",
+    "mrr",
+    "stripe",
+    "hubspot",
+    "analytics",
+    "dashboard"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "npx tsx scripts/seed-demo.ts",
+    "db:seed:basic": "npx tsx scripts/seed-local-customers.ts",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",

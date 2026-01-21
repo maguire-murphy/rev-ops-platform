@@ -173,7 +173,7 @@ function ResetPasswordForm() {
             </div>
 
             {error && (
-                <div className="rounded-md bg-red-50 p-4">
+                <div className="rounded-md bg-red-50 p-4" role="alert" aria-live="polite">
                     <p className="text-sm text-red-800">{error}</p>
                 </div>
             )}
@@ -202,11 +202,11 @@ export default function ResetPasswordPage() {
     return (
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="flex justify-center">
+                <Link href="/" className="flex justify-center">
                     <div className="h-12 w-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-2xl">
                         B
                     </div>
-                </div>
+                </Link>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900">
                     Set new password
                 </h2>

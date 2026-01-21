@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
-const SITE_NAME = "Beacon";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://beacon.com";
-const SITE_DESCRIPTION = "Revenue intelligence for modern SaaS startups. Connect Stripe & HubSpot to track MRR, churn, and pipeline growth.";
+const SITE_NAME = "RevOps Analytics";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
+const SITE_DESCRIPTION = "Revenue operations analytics platform connecting Stripe and HubSpot for unified SaaS metrics.";
 const DEFAULT_OG_IMAGE = "/og-image.png";
 
 interface PageMetadata {
@@ -62,7 +62,6 @@ export function generateMetadata({
             title: fullTitle,
             description,
             images: [ogImageUrl],
-            // Add your Twitter handle when available: site: "@BeaconRevOps",
         },
     };
 }

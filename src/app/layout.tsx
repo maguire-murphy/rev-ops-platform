@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://beacon.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...genMetadata({
-    title: "Beacon",
-    description: "Revenue intelligence for modern SaaS startups. Connect Stripe & HubSpot to track MRR, churn, and pipeline growth.",
+    title: "RevOps Analytics",
+    description: "Revenue operations analytics platform connecting Stripe and HubSpot for unified SaaS metrics.",
     path: "/",
   }),
   icons: {

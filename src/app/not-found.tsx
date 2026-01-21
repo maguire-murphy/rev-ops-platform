@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { Home, Search, BookOpen, Mail } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = generateMetadata({
+    title: "Page Not Found",
+    description: "The page you're looking for doesn't exist. Return to the homepage or explore the documentation.",
+    path: "/404",
+});
 
 export default function NotFound() {
     return (

@@ -4,7 +4,12 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Loader2, Eye, EyeOff } from "lucide-react";
+import { Loader2, Eye, EyeOff, Play } from "lucide-react";
+
+const DEMO_CREDENTIALS = {
+    email: "demo@revops.app",
+    password: "demo1234",
+};
 
 export default function LoginPage() {
     const router = useRouter();
@@ -15,6 +20,7 @@ export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [isDemoLoading, setIsDemoLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,26 +47,89 @@ export default function LoginPage() {
         }
     };
 
+    const handleDemoLogin = async () => {
+        setError("");
+        setIsDemoLoading(true);
+
+        try {
+            const result = await signIn("credentials", {
+                email: DEMO_CREDENTIALS.email,
+                password: DEMO_CREDENTIALS.password,
+                redirect: false,
+            });
+
+            if (result?.error) {
+                setError("Demo login failed. Please try again.");
+            } else {
+                router.push("/dashboard");
+                router.refresh();
+            }
+        } catch (err) {
+            setError("An error occurred. Please try again.");
+        } finally {
+            setIsDemoLoading(false);
+        }
+    };
+
     return (
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="flex justify-center">
+                <Link href="/" className="flex justify-center">
                     <div className="h-12 w-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-2xl">
-                        B
+                        R
                     </div>
-                </div>
+                </Link>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900">
-                    Sign in to your account
+                    RevOps Analytics
                 </h2>
                 <p className="mt-2 text-center text-sm text-slate-600">
-                    Don't have an account?{" "}
-                    <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
-                        Sign up
-                    </Link>
+                    A portfolio project demonstrating SaaS revenue analytics
                 </p>
             </div>
 
+            {/* Demo Access Card */}
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 py-5 px-6 rounded-lg shadow-lg mx-4 sm:mx-0">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h3 className="text-white font-semibold">Try the Demo</h3>
+                            <p className="text-indigo-200 text-sm mt-1">
+                                One-click access with sample data
+                            </p>
+                        </div>
+                        <button
+                            onClick={handleDemoLogin}
+                            disabled={isDemoLoading || isLoading}
+                            className="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                            {isDemoLoading ? (
+                                <>
+                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                    Loading...
+                                </>
+                            ) : (
+                                <>
+                                    <Play className="h-4 w-4" />
+                                    Enter Demo
+                                </>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
+                <div className="relative">
+                    <div className="absolute inset-0 flex items-center px-4 sm:px-0">
+                        <div className="w-full border-t border-slate-300" />
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                        <span className="bg-slate-50 px-2 text-slate-500">Or sign in with credentials</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
@@ -121,7 +190,7 @@ export default function LoginPage() {
                         </div>
 
                         {error && (
-                            <div className="rounded-md bg-red-50 p-4">
+                            <div className="rounded-md bg-red-50 p-4" role="alert" aria-live="polite">
                                 <p className="text-sm text-red-800">{error}</p>
                             </div>
                         )}

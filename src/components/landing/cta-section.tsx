@@ -16,7 +16,7 @@ export function CTASection() {
                         Ready to see your real MRR?
                     </h2>
                     <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-brand-100">
-                        Join forward-thinking SaaS founders who trust Beacon for their revenue intelligence. Start for free today.
+                        Explore this revenue operations platform to see how unified metrics can transform SaaS decision-making.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <Link

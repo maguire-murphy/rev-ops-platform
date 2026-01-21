@@ -68,7 +68,7 @@ export async function requestPasswordReset(email: string) {
     const { sendEmail } = await import("@/server/utils/email");
     await sendEmail({
         to: email,
-        subject: "Reset your Beacon password",
+        subject: "Reset your password",
         text: `Click here to reset your password: http://localhost:3000/reset-password?token=${token}`,
     });
 

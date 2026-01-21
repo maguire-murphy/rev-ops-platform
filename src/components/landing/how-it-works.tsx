@@ -10,7 +10,7 @@ export function HowItWorks() {
                         From signup to insights in under 5 minutes
                     </p>
                     <p className="mt-6 text-lg leading-8 text-slate-600">
-                        No complex setup. No engineering required. Beacon connects to your existing tools.
+                        No complex setup. No engineering required. The platform connects to your existing tools.
                     </p>
                 </div>
 
