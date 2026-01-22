@@ -26,7 +26,7 @@ export default function HubSpotIntegrationPage() {
                     Connect HubSpot to see how your sales pipeline correlates with revenue metrics.
                 </p>
 
-                <div className="prose prose-slate mt-12 max-w-none">
+                <div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4">
                     <h2>Overview</h2>
                     <p>
                         The HubSpot integration brings CRM data into the platform, allowing you to:

@@ -26,7 +26,7 @@ export default function StripeIntegrationPage() {
                     Connect Stripe to automatically track MRR, ARR, churn, and customer metrics.
                 </p>
 
-                <div className="prose prose-slate mt-12 max-w-none">
+                <div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4">
                     <h2>Overview</h2>
                     <p>
                         The Stripe integration is the core of the platform's revenue analytics. It automatically syncs your subscription data, customer information, and payment history to provide real-time insights into your SaaS metrics.

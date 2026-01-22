@@ -26,8 +26,8 @@ export default function GettingStartedPage() {
                     Follow this guide to set up your account and start tracking your SaaS revenue metrics in minutes.
                 </p>
 
-                <div className="prose prose-slate mt-12 max-w-none">
-                    <section>
+                <div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed">
+                    <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
                                 1
@@ -56,7 +56,7 @@ export default function GettingStartedPage() {
                         </div>
                     </section>
 
-                    <section>
+                    <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
                                 2
@@ -94,7 +94,7 @@ export default function GettingStartedPage() {
                         </p>
                     </section>
 
-                    <section>
+                    <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
                                 3
@@ -121,7 +121,7 @@ export default function GettingStartedPage() {
                         </div>
                     </section>
 
-                    <section>
+                    <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
                                 4

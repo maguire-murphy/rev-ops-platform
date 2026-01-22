@@ -29,13 +29,13 @@ export function PipelineBoard() {
     };
 
     return (
-        <div className="flex h-full gap-4 overflow-x-auto pb-4">
+        <div className="flex gap-4 overflow-x-auto pb-4 h-[600px] md:h-full">
             {STAGES.map((stage) => {
                 const stageDeals = getDealsByStage(stage.id);
                 const totalValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0), 0);
 
                 return (
-                    <div key={stage.id} className="w-80 min-w-[20rem] flex-shrink-0 flex flex-col rounded-lg bg-slate-50 border border-slate-200 h-full max-h-[calc(100vh-16rem)] md:max-h-[calc(100vh-12rem)]">
+                    <div key={stage.id} className="w-80 min-w-[20rem] flex-shrink-0 flex flex-col rounded-lg bg-slate-50 border border-slate-200 h-full">
                         <div className="p-3 border-b border-slate-200 bg-white rounded-t-lg flex-shrink-0">
                             <div className="flex items-center justify-between mb-1">
                                 <h3 className="font-semibold text-sm text-slate-700">{stage.label}</h3>
