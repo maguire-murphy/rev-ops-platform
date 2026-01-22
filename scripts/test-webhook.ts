@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 const db = new PrismaClient();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: "2024-11-20.acacia",
+    apiVersion: "2025-11-17.clover",
 });
 
 async function main() {
@@ -96,7 +96,7 @@ async function main() {
         });
 
         if (movement) {
-            console.log("SUCCESS: MRR Movement found:", movement.type, movement.amount);
+            console.log("SUCCESS: MRR Movement found:", movement.movementType, movement.mrrAmount);
         } else {
             console.error("FAILURE: MRR Movement not found");
         }

@@ -61,3 +61,5 @@ lint_*.txt
 
 # OS
 Thumbs.db
+
+.vercel

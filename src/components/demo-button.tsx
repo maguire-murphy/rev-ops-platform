@@ -30,12 +30,21 @@ export function DemoButton({ variant = "primary", size = "default", className = 
                 redirect: false,
             });
 
-            if (!result?.error) {
+            console.log("SignIn result:", result);
+
+            if (result?.error) {
+                console.error("Demo login error:", result.error);
+                alert(`Demo login failed: ${result.error}`);
+            } else if (result?.ok) {
                 router.push("/dashboard");
                 router.refresh();
+            } else {
+                console.error("Unexpected result:", result);
+                alert("Demo login failed - unexpected result");
             }
         } catch (err) {
-            console.error("Demo login failed:", err);
+            console.error("Demo login exception:", err);
+            alert(`Demo login exception: ${err}`);
         } finally {
             setIsLoading(false);
         }
