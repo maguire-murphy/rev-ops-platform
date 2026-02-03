@@ -38,38 +38,46 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
             authorize: async (credentials) => {
                 try {
+                    console.log("[Auth] Starting authorization");
+                    // Safe logging - avoid logging plain password in production
+                    console.log("[Auth] Credentials received for:", credentials?.email);
+
                     if (!credentials?.email || !credentials?.password) {
-                        console.log("Missing credentials");
+                        console.log("[Auth] Missing credentials");
                         return null;
                     }
 
+                    console.log("[Auth] Fetching user from DB...");
                     const user = await db.user.findUnique({
                         where: { email: credentials.email as string },
                     });
+                    console.log("[Auth] DB lookup result:", user ? "User found" : "User NOT found");
 
                     if (!user || !user.password) {
-                        console.log("User not found or no password");
+                        console.log("[Auth] User not found or no password");
                         return null;
                     }
 
+                    console.log("[Auth] Verifying password...");
                     const isPasswordValid = await bcrypt.compare(
                         credentials.password as string,
                         user.password
                     );
+                    console.log("[Auth] Password verification result:", isPasswordValid);
 
                     if (!isPasswordValid) {
-                        console.log("Invalid password");
+                        console.log("[Auth] Invalid password");
                         return null;
                     }
 
-                    console.log("Auth successful for:", user.email);
+                    console.log("[Auth] Auth successful for:", user.email);
                     return {
                         id: user.id,
                         email: user.email!,
                         name: user.name!,
                     };
                 } catch (error) {
-                    console.error("Authorize error:", error);
+                    console.error("[Auth] Authorize error:", error);
                     return null;
                 }
             },

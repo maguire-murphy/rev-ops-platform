@@ -24,9 +24,9 @@ export default function CustomersPage() {
     // Filter customers
     const filteredCustomers = useMemo(() => {
         if (!customers) return [];
-        
+
         return customers.filter((c) => {
-            const matchesSearch = 
+            const matchesSearch =
                 c.name?.toLowerCase().includes(search.toLowerCase()) ||
                 c.email?.toLowerCase().includes(search.toLowerCase());
             const matchesStatus = statusFilter === "all" || c.status === statusFilter;
@@ -38,7 +38,7 @@ export default function CustomersPage() {
     const sortedCustomers = useMemo(() => {
         return [...filteredCustomers].sort((a, b) => {
             let comparison = 0;
-            
+
             if (sortField === "name") {
                 comparison = (a.name || "").localeCompare(b.name || "");
             } else if (sortField === "mrr") {
@@ -46,7 +46,7 @@ export default function CustomersPage() {
             } else if (sortField === "date") {
                 comparison = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
             }
-            
+
             return sortDirection === "asc" ? comparison : -comparison;
         });
     }, [filteredCustomers, sortField, sortDirection]);
@@ -75,7 +75,7 @@ export default function CustomersPage() {
 
     const SortIcon = ({ field }: { field: SortField }) => {
         if (sortField !== field) return <ArrowUpDown className="h-4 w-4 text-slate-400" />;
-        return sortDirection === "asc" 
+        return sortDirection === "asc"
             ? <ArrowUp className="h-4 w-4 text-indigo-600" />
             : <ArrowDown className="h-4 w-4 text-indigo-600" />;
     };
@@ -116,7 +116,7 @@ export default function CustomersPage() {
                     <input
                         type="text"
                         placeholder="Search customers..."
-                        className="block w-full sm:w-64 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+                        className="block w-full sm:w-64 rounded-md border-gray-300 shadow-sm focus:border-yellow-primary focus:ring-yellow-primary sm:text-sm p-2 border"
                         value={search}
                         onChange={(e) => {
                             setSearch(e.target.value);
@@ -129,7 +129,7 @@ export default function CustomersPage() {
                             setStatusFilter(e.target.value);
                             setCurrentPage(1);
                         }}
-                        className="block w-full sm:w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+                        className="block w-full sm:w-40 rounded-md border-gray-300 shadow-sm focus:border-yellow-primary focus:ring-yellow-primary sm:text-sm p-2 border"
                     >
                         <option value="all">All Status</option>
                         <option value="active">Active</option>
@@ -139,7 +139,7 @@ export default function CustomersPage() {
                     {(search || statusFilter !== "all") && (
                         <button
                             onClick={clearFilters}
-                            className="inline-flex items-center gap-1 px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors"
+                            className="inline-flex items-center gap-1 px-3 py-2 text-sm text-slate-600 hover:text-navy-deep hover:bg-slate-100 rounded-md transition-colors"
                         >
                             <X className="h-4 w-4" />
                             Clear
@@ -155,7 +155,7 @@ export default function CustomersPage() {
                     <p>No customers match your filters.</p>
                     <button
                         onClick={clearFilters}
-                        className="mt-2 text-indigo-600 hover:text-indigo-800 text-sm font-medium"
+                        className="mt-2 text-navy-rich hover:text-navy-deep text-sm font-medium underline"
                     >
                         Clear filters
                     </button>
@@ -164,12 +164,12 @@ export default function CustomersPage() {
                 <>
                     <div className="overflow-x-auto rounded-xl border bg-white shadow-sm">
                         <table className="w-full text-sm text-left">
-                            <thead className="bg-muted/50 text-muted-foreground font-medium border-b">
+                            <thead className="bg-slate-50 text-navy-deep font-bold border-b">
                                 <tr>
                                     <th className="p-4">
-                                        <button 
+                                        <button
                                             onClick={() => handleSort("name")}
-                                            className="flex items-center gap-1 hover:text-slate-900"
+                                            className="flex items-center gap-1 hover:text-yellow-600"
                                         >
                                             Name
                                             <SortIcon field="name" />
@@ -177,18 +177,18 @@ export default function CustomersPage() {
                                     </th>
                                     <th className="p-4">Status</th>
                                     <th className="p-4 text-right">
-                                        <button 
+                                        <button
                                             onClick={() => handleSort("mrr")}
-                                            className="flex items-center gap-1 ml-auto hover:text-slate-900"
+                                            className="flex items-center gap-1 ml-auto hover:text-yellow-600"
                                         >
                                             Current MRR
                                             <SortIcon field="mrr" />
                                         </button>
                                     </th>
                                     <th className="p-4 text-right">
-                                        <button 
+                                        <button
                                             onClick={() => handleSort("date")}
-                                            className="flex items-center gap-1 ml-auto hover:text-slate-900"
+                                            className="flex items-center gap-1 ml-auto hover:text-yellow-600"
                                         >
                                             Joined
                                             <SortIcon field="date" />
@@ -198,12 +198,12 @@ export default function CustomersPage() {
                             </thead>
                             <tbody>
                                 {paginatedCustomers.map((customer) => (
-                                    <tr key={customer.id} className="border-b last:border-0 hover:bg-muted/50">
+                                    <tr key={customer.id} className="border-b last:border-0 hover:bg-slate-50">
                                         <td className="p-4">
-                                            <Link href={`/customers/${customer.id}`} className="font-medium hover:underline text-indigo-600">
+                                            <Link href={`/customers/${customer.id}`} className="font-medium hover:underline text-navy-rich">
                                                 {customer.name || "Unknown"}
                                             </Link>
-                                            <div className="text-xs text-muted-foreground">{customer.email}</div>
+                                            <div className="text-xs text-slate-500">{customer.email}</div>
                                         </td>
                                         <td className="p-4">
                                             <span
@@ -219,13 +219,13 @@ export default function CustomersPage() {
                                                 {customer.status.toUpperCase()}
                                             </span>
                                         </td>
-                                        <td className="p-4 text-right font-mono">
+                                        <td className="p-4 text-right font-mono text-slate-700">
                                             {new Intl.NumberFormat("en-US", {
                                                 style: "currency",
                                                 currency: "USD",
                                             }).format(customer.currentMrr / 100)}
                                         </td>
-                                        <td className="p-4 text-right text-muted-foreground">
+                                        <td className="p-4 text-right text-slate-500">
                                             {new Date(customer.createdAt).toLocaleDateString()}
                                         </td>
                                     </tr>

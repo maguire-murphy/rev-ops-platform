@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { DemoButton } from "@/components/demo-button";
 
 export function DemoCtaSection() {
     return (
@@ -13,13 +14,7 @@ export function DemoCtaSection() {
                     <br className="hidden sm:inline" /> No signup required.
                 </p>
 
-                <Link
-                    href="/dashboard/demo"
-                    className="inline-flex items-center gap-2 rounded-lg bg-navy-deep px-12 py-5 text-xl font-bold text-white shadow-xl hover:bg-navy-rich hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
-                >
-                    Launch Demo
-                    <ArrowRight className="h-6 w-6" />
-                </Link>
+                <DemoButton variant="primary" size="large" className="bg-navy-deep text-white hover:bg-navy-rich border-navy-deep hover:border-navy-rich shadow-xl hover:shadow-2xl text-xl py-5 px-12" />
             </div>
         </section>
     );

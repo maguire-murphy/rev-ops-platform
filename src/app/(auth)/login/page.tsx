@@ -180,7 +180,14 @@ export default function LoginPage() {
                                     )}
                                 </button>
                             </div>
-                            <div className="mt-2 flex items-center justify-end">
+                            <div className="mt-2 flex items-center justify-between">
+                                <button
+                                    type="button"
+                                    onClick={() => setFormData({ email: DEMO_CREDENTIALS.email, password: DEMO_CREDENTIALS.password })}
+                                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                                >
+                                    Use demo credentials
+                                </button>
                                 <Link
                                     href="/forgot-password"
                                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"

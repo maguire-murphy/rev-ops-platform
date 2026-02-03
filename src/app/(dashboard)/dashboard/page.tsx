@@ -9,14 +9,14 @@ import { NoStripeConnectionState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
 
 export default function DashboardPage() {
-    const { 
-        data: metrics, 
+    const {
+        data: metrics,
         isLoading: isLoadingMetrics,
         error: metricsError,
         refetch: refetchMetrics,
     } = api.mrr.getDashboardMetrics.useQuery();
-    const { 
-        data: history, 
+    const {
+        data: history,
         isLoading: isLoadingHistory,
         error: historyError,
         refetch: refetchHistory,
@@ -77,7 +77,7 @@ export default function DashboardPage() {
 
     // Show friendly state if connected but no data yet
     const hasNoData = totalMrr === 0 && (!history || history.length === 0);
-    
+
     if (hasNoData) {
         return (
             <div className="space-y-6">
@@ -92,8 +92,8 @@ export default function DashboardPage() {
                     </button>
                 </div>
                 <div className="rounded-xl border bg-white p-8 shadow-sm text-center">
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 mb-4">
-                        <DollarSign className="h-8 w-8 text-indigo-600" />
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-soft mb-4">
+                        <DollarSign className="h-8 w-8 text-navy-deep" />
                     </div>
                     <h3 className="text-lg font-semibold text-slate-900">Syncing Your Data</h3>
                     <p className="mt-2 max-w-md mx-auto text-sm text-slate-600">
@@ -109,8 +109,8 @@ export default function DashboardPage() {
     }
 
     // Calculate ARPU
-    const arpu = metrics?.activeCustomers && metrics.activeCustomers > 0 
-        ? totalMrr / metrics.activeCustomers 
+    const arpu = metrics?.activeCustomers && metrics.activeCustomers > 0
+        ? totalMrr / metrics.activeCustomers
         : 0;
 
     return (

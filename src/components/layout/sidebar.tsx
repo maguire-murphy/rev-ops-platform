@@ -84,16 +84,16 @@ export function Sidebar() {
                                 href={item.href}
                                 onClick={handleNavigate}
                                 className={cn(
-                                    "group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                                    "group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-all duration-200",
                                     isActive
-                                        ? "bg-slate-800 text-white"
-                                        : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                                        ? "bg-white/10 text-yellow-primary shadow-sm"
+                                        : "text-blue-light hover:bg-white/5 hover:text-white"
                                 )}
                             >
                                 <item.icon
                                     className={cn(
-                                        "mr-3 h-5 w-5 flex-shrink-0",
-                                        isActive ? "text-indigo-400" : "text-slate-500 group-hover:text-white"
+                                        "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
+                                        isActive ? "text-yellow-primary" : "text-blue-light group-hover:text-white"
                                     )}
                                 />
                                 {item.name}
@@ -106,23 +106,23 @@ export function Sidebar() {
                     <Link
                         href="/"
                         onClick={handleNavigate}
-                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-blue-light hover:bg-white/5 hover:text-white transition-colors"
                     >
-                        <Home className="mr-3 h-5 w-5 flex-shrink-0 text-slate-500 group-hover:text-white" />
+                        <Home className="mr-3 h-5 w-5 flex-shrink-0 text-blue-light group-hover:text-white" />
                         Project Overview
-                        <ExternalLink className="ml-auto h-3 w-3 text-slate-600 group-hover:text-slate-400" />
+                        <ExternalLink className="ml-auto h-3 w-3 text-blue-light/70 group-hover:text-white" />
                     </Link>
                 </div>
 
-                <div className="border-t border-slate-800 p-4">
+                <div className="border-t border-white/10 p-4">
                     <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-semibold">
+                        <div className="h-8 w-8 rounded-full bg-yellow-primary flex items-center justify-center text-navy-deep text-sm font-bold">
                             {session?.user?.name?.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) ||
                                 session?.user?.email?.slice(0, 2).toUpperCase() || "U"}
                         </div>
                         <div className="text-sm overflow-hidden">
-                            <p className="font-medium truncate">{session?.user?.name || session?.user?.email?.split("@")[0] || "User"}</p>
-                            <p className="text-xs text-slate-500 truncate">{session?.user?.email || ""}</p>
+                            <p className="font-medium text-white truncate">{session?.user?.name || session?.user?.email?.split("@")[0] || "User"}</p>
+                            <p className="text-xs text-blue-light truncate">{session?.user?.email || ""}</p>
                         </div>
                     </div>
                 </div>

@@ -102,8 +102,8 @@ function MetricCard({ title, value, icon: Icon }: { title: string; value: string
     return (
         <div className="rounded-xl border bg-white p-4 shadow-sm">
             <div className="flex items-center gap-2">
-                <div className="p-2 bg-indigo-50 rounded-lg">
-                    <Icon className="h-4 w-4 text-indigo-600" />
+                <div className="p-2 bg-yellow-soft rounded-lg">
+                    <Icon className="h-4 w-4 text-navy-deep" />
                 </div>
                 <p className="text-sm font-medium text-slate-500">{title}</p>
             </div>

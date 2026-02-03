@@ -37,13 +37,7 @@ export default function ProjectPage() {
               spreadsheet gymnastics.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/signup"
-                className="group flex items-center justify-center gap-2 rounded-lg bg-yellow-primary px-8 py-4 text-lg font-semibold text-navy-deep shadow-lg transition-all hover:bg-yellow-soft hover:scale-105"
-              >
-                <Play className="h-5 w-5 fill-current" />
-                Try Demo
-              </Link>
+              <DemoButton variant="primary" size="large" />
               <Link
                 href="https://github.com/maguire-murphy/rev-ops-platform"
                 className="group flex items-center justify-center gap-2 rounded-lg border-2 border-white/20 px-8 py-3.5 text-lg font-semibold text-white transition-all hover:border-yellow-primary hover:text-yellow-primary"

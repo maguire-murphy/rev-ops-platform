@@ -43,7 +43,7 @@ export function ForecastChart({ data, activeScenario, showAll }: ForecastChartPr
 
     const scenarios = [
         { id: "conservative", name: "Conservative", color: "#94a3b8" },
-        { id: "moderate", name: "Moderate", color: "#4f46e5" },
+        { id: "moderate", name: "Moderate", color: "#1E3A5F" },
         { id: "aggressive", name: "Aggressive", color: "#94a3b8" },
     ];
 
@@ -86,10 +86,10 @@ export function ForecastChart({ data, activeScenario, showAll }: ForecastChartPr
                             type="monotone"
                             dataKey="conservative"
                             name="Conservative"
-                            stroke={activeScenario === "conservative" ? "#4f46e5" : "#94a3b8"}
+                            stroke={activeScenario === "conservative" ? "#1E3A5F" : "#94a3b8"}
                             strokeWidth={activeScenario === "conservative" ? 3 : 1}
                             strokeDasharray={activeScenario === "conservative" ? "0" : "5 5"}
-                            dot={activeScenario === "conservative" ? { r: 4, fill: "#4f46e5" } : false}
+                            dot={activeScenario === "conservative" ? { r: 4, fill: "#1E3A5F" } : false}
                             activeDot={{ r: 6 }}
                         />
                     )}
@@ -100,10 +100,10 @@ export function ForecastChart({ data, activeScenario, showAll }: ForecastChartPr
                             type="monotone"
                             dataKey="moderate"
                             name="Moderate"
-                            stroke={activeScenario === "moderate" ? "#4f46e5" : "#94a3b8"}
+                            stroke={activeScenario === "moderate" ? "#1E3A5F" : "#94a3b8"}
                             strokeWidth={activeScenario === "moderate" ? 3 : 1}
                             strokeDasharray={activeScenario === "moderate" ? "0" : "5 5"}
-                            dot={activeScenario === "moderate" ? { r: 4, fill: "#4f46e5" } : false}
+                            dot={activeScenario === "moderate" ? { r: 4, fill: "#1E3A5F" } : false}
                             activeDot={{ r: 6 }}
                         />
                     )}
@@ -114,10 +114,10 @@ export function ForecastChart({ data, activeScenario, showAll }: ForecastChartPr
                             type="monotone"
                             dataKey="aggressive"
                             name="Aggressive"
-                            stroke={activeScenario === "aggressive" ? "#4f46e5" : "#94a3b8"}
+                            stroke={activeScenario === "aggressive" ? "#1E3A5F" : "#94a3b8"}
                             strokeWidth={activeScenario === "aggressive" ? 3 : 1}
                             strokeDasharray={activeScenario === "aggressive" ? "0" : "5 5"}
-                            dot={activeScenario === "aggressive" ? { r: 4, fill: "#4f46e5" } : false}
+                            dot={activeScenario === "aggressive" ? { r: 4, fill: "#1E3A5F" } : false}
                             activeDot={{ r: 6 }}
                         />
                     )}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DemoButton } from "@/components/demo-button";
 
 export function CTASection() {
     return (
@@ -19,12 +20,7 @@ export function CTASection() {
                         Explore this revenue operations platform to see how unified metrics can transform SaaS decision-making.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
-                        <Link
-                            href="/signup"
-                            className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-brand-600 shadow-sm hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all hover:scale-105"
-                        >
-                            Start Free
-                        </Link>
+                        <DemoButton variant="primary" className="bg-white text-brand-600 hover:bg-brand-50 border-white" />
                         <Link href="#demo" className="text-sm font-semibold leading-6 text-white hover:text-brand-100">
                             Talk to sales <span aria-hidden="true">→</span>
                         </Link>

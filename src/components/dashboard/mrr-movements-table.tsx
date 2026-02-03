@@ -16,7 +16,7 @@ export function MrrMovementsTable() {
     return (
         <div className="rounded-md border overflow-x-auto">
             <table className="w-full text-sm text-left min-w-[600px]">
-                <thead className="bg-muted/50 text-muted-foreground font-medium">
+                <thead className="bg-slate-50 text-navy-deep font-bold border-b">
                     <tr>
                         <th className="p-4 whitespace-nowrap">Date</th>
                         <th className="p-4 whitespace-nowrap">Customer</th>
@@ -36,12 +36,12 @@ export function MrrMovementsTable() {
                             <td className="p-4 whitespace-nowrap">
                                 <span
                                     className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${movement.movementType === "new"
-                                            ? "bg-green-100 text-green-800"
-                                            : movement.movementType === "expansion"
-                                                ? "bg-blue-100 text-blue-800"
-                                                : movement.movementType === "contraction"
-                                                    ? "bg-orange-100 text-orange-800"
-                                                    : "bg-red-100 text-red-800"
+                                        ? "bg-green-100 text-green-800"
+                                        : movement.movementType === "expansion"
+                                            ? "bg-blue-100 text-blue-800"
+                                            : movement.movementType === "contraction"
+                                                ? "bg-orange-100 text-orange-800"
+                                                : "bg-red-100 text-red-800"
                                         }`}
                                 >
                                     {movement.movementType.toUpperCase()}

@@ -44,7 +44,7 @@ export default function ForecastPage() {
                             id="showAll"
                             checked={showAll}
                             onChange={(e) => setShowAll(e.target.checked)}
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            className="h-4 w-4 rounded border-gray-300 text-navy-rich focus:ring-navy-rich"
                         />
                         <label htmlFor="showAll" className="text-sm font-medium text-gray-700">
                             Show all projections
@@ -53,7 +53,7 @@ export default function ForecastPage() {
                     <select
                         value={scenario}
                         onChange={(e) => setScenario(e.target.value as "conservative" | "moderate" | "aggressive")}
-                        className="block w-full sm:w-auto rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full sm:w-auto rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-navy-rich sm:text-sm sm:leading-6"
                     >
                         <option value="conservative">Conservative</option>
                         <option value="moderate">Moderate</option>
@@ -65,8 +65,8 @@ export default function ForecastPage() {
             <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
                 <div className="rounded-xl border bg-white p-4 shadow-sm">
                     <div className="flex items-center gap-2">
-                        <div className="p-2 bg-indigo-50 rounded-lg">
-                            <TrendingUp className="h-4 w-4 text-indigo-600" />
+                        <div className="p-2 bg-yellow-soft rounded-lg">
+                            <TrendingUp className="h-4 w-4 text-navy-deep" />
                         </div>
                         <p className="text-sm font-medium text-slate-500">Projected MRR (12mo)</p>
                     </div>

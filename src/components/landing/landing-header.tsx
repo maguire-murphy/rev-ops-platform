@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, Play, X } from "lucide-react";
 import { useState } from "react";
 import { LighthouseIcon } from "@/components/LighthouseIcon";
+import { DemoButton } from "@/components/demo-button";
 
 export function LandingHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,13 +33,7 @@ export function LandingHeader() {
                 </nav>
 
                 <div className="hidden md:flex items-center gap-8">
-                    <Link
-                        href="/signup"
-                        className="flex items-center gap-2 rounded-lg bg-yellow-primary px-6 py-3 text-base font-semibold text-navy-deep shadow-md hover:bg-yellow-soft hover:shadow-lg transition-all"
-                    >
-                        <Play className="h-4 w-4 fill-current" />
-                        Try Demo
-                    </Link>
+                    <DemoButton variant="primary" />
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -77,20 +72,12 @@ export function LandingHeader() {
                             Docs
                         </Link>
                         <hr className="border-white/10" />
-                        <Link
-                            href="/login"
-                            className="text-base font-medium text-white hover:text-yellow-primary"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Sign In
-                        </Link>
-                        <Link
-                            href="/signup"
-                            className="flex w-full justify-center rounded-lg bg-yellow-primary px-4 py-2.5 text-base font-semibold text-navy-deep hover:bg-yellow-soft"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Try Demo
-                        </Link>
+                        <div className="w-full" onClick={() => setMobileMenuOpen(false)}>
+                            <DemoButton variant="secondary" className="w-full justify-center text-white border-white hover:bg-white/10" />
+                        </div>
+                        <div className="w-full" onClick={() => setMobileMenuOpen(false)}>
+                            <DemoButton variant="primary" className="w-full flex justify-center" />
+                        </div>
                     </nav>
                 </div>
             )}

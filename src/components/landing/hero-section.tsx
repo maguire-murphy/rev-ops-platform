@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { DemoButton } from "@/components/demo-button";
 
 export function HeroSection() {
     return (
@@ -18,14 +19,9 @@ export function HeroSection() {
                         Connect Stripe and HubSpot to get enterprise-grade revenue analytics—without the enterprise price tag. Built for B2B SaaS companies scaling from $500K to $10M ARR.
                     </p>
                     <div className="flex items-center justify-center gap-x-6">
-                        <Link
-                            href="/signup"
-                            className="rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 transition-all hover:scale-105"
-                        >
-                            Start Free
-                        </Link>
-                        <Link href="#demo" className="text-sm font-semibold leading-6 text-slate-900 flex items-center gap-1 hover:text-brand-600 transition-colors">
-                            View Demo <ArrowRight className="h-4 w-4" />
+                        <DemoButton variant="primary" size="large" />
+                        <Link href="#features" className="text-sm font-semibold leading-6 text-slate-900 flex items-center gap-1 hover:text-brand-600 transition-colors">
+                            Learn more <ArrowRight className="h-4 w-4" />
                         </Link>
                     </div>
                     <div className="mt-8 flex items-center justify-center gap-4 text-sm text-slate-500">

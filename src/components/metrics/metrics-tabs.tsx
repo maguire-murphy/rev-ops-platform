@@ -28,11 +28,11 @@ export function MetricsTabs({ activeTab, onTabChange }: MetricsTabsProps) {
                             className={cn(
                                 "group inline-flex items-center gap-2 border-b-2 py-4 px-1 text-sm font-medium transition-colors",
                                 isActive
-                                    ? "border-indigo-500 text-indigo-600"
+                                    ? "border-yellow-primary text-navy-rich"
                                     : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700"
                             )}
                         >
-                            <Icon className={cn("h-5 w-5", isActive ? "text-indigo-500" : "text-slate-400 group-hover:text-slate-500")} />
+                            <Icon className={cn("h-5 w-5", isActive ? "text-yellow-primary" : "text-slate-400 group-hover:text-slate-500")} />
                             {tab.label}
                         </button>
                     );

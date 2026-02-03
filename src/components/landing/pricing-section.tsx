@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { DemoButton } from "@/components/demo-button";
 
 const tiers = [
     {
@@ -152,16 +153,12 @@ export function PricingSection() {
                                     ))}
                                 </ul>
                             </div>
-                            <Link
-                                href={tier.href}
-                                aria-describedby={tier.id}
-                                className={`${tier.mostPopular
-                                        ? "bg-brand-600 text-white shadow-sm hover:bg-brand-500"
-                                        : "text-brand-600 ring-1 ring-inset ring-brand-200 hover:ring-brand-300"
-                                    } mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 transition-all`}
-                            >
-                                {tier.priceMonthly === "$0" ? "Start for free" : "Get started"}
-                            </Link>
+                            <div className="mt-8">
+                                <DemoButton
+                                    variant={tier.mostPopular ? "primary" : "secondary"}
+                                    className="w-full justify-center"
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -20,8 +20,8 @@ export function MrrChart({ data }: MrrChartProps) {
                     <AreaChart data={data}>
                         <defs>
                             <linearGradient id="colorMrr" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                                <stop offset="5%" stopColor="#1E3A5F" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#1E3A5F" stopOpacity={0} />
                             </linearGradient>
                         </defs>
                         <XAxis
@@ -43,14 +43,14 @@ export function MrrChart({ data }: MrrChartProps) {
                             tickFormatter={(value) => `$${value}`}
                         />
                         <Tooltip
-                            contentStyle={{ backgroundColor: "#1f2937", border: "none", borderRadius: "8px", color: "#fff" }}
+                            contentStyle={{ backgroundColor: "#0A1628", border: "1px solid #1E3A5F", borderRadius: "8px", color: "#fff" }}
                             formatter={(value: number) => [`$${value.toFixed(2)}`, "MRR"]}
                             labelFormatter={(label) => new Date(label).toLocaleDateString()}
                         />
                         <Area
                             type="monotone"
                             dataKey="mrr"
-                            stroke="#8884d8"
+                            stroke="#1E3A5F"
                             fillOpacity={1}
                             fill="url(#colorMrr)"
                         />

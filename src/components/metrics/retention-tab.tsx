@@ -48,8 +48,8 @@ export function RetentionTab() {
                         <button
                             onClick={() => setCohortType("revenue")}
                             className={`${cohortType === "revenue"
-                                    ? "border-indigo-500 text-indigo-600"
-                                    : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
+                                ? "border-yellow-primary text-navy-rich"
+                                : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
                                 } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
                         >
                             Revenue Retention
@@ -57,8 +57,8 @@ export function RetentionTab() {
                         <button
                             onClick={() => setCohortType("customer")}
                             className={`${cohortType === "customer"
-                                    ? "border-indigo-500 text-indigo-600"
-                                    : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
+                                ? "border-yellow-primary text-navy-rich"
+                                : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
                                 } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
                         >
                             Customer Retention

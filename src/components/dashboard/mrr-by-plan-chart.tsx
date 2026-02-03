@@ -2,7 +2,7 @@
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"];
+const COLORS = ["#0A1628", "#1E3A5F", "#FFD93D", "#8B9DC3", "#FFF4CC"];
 
 interface MrrByPlanChartProps {
     data: { name: string; value: number }[];
@@ -19,7 +19,7 @@ export function MrrByPlanChart({ data }: MrrByPlanChartProps) {
                         cy="50%"
                         labelLine={false}
                         outerRadius={80}
-                        fill="#8884d8"
+                        fill="#1E3A5F"
                         dataKey="value"
                     >
                         {data.map((entry, index) => (
