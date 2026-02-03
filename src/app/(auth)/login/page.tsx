@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Loader2, Eye, EyeOff, Play } from "lucide-react";
+import { LighthouseIcon } from "@/components/LighthouseIcon";
 
 const DEMO_CREDENTIALS = {
     email: "demo@revops.app",
@@ -75,12 +76,12 @@ export default function LoginPage() {
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link href="/" className="flex justify-center">
-                    <div className="h-12 w-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-2xl">
-                        R
+                    <div className="h-12 w-12 rounded-xl bg-navy-rich border border-white/10 flex items-center justify-center text-white font-bold text-2xl">
+                        <LighthouseIcon className="h-8 w-8" />
                     </div>
                 </Link>
-                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900">
-                    RevOps Analytics
+                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-navy-deep">
+                    Beacon
                 </h2>
                 <p className="mt-2 text-center text-sm text-slate-600">
                     A portfolio project demonstrating SaaS revenue analytics

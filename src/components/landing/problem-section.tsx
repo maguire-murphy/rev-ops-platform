@@ -1,65 +1,59 @@
-import { XCircle, AlertTriangle, FileSpreadsheet, Clock } from "lucide-react";
+import { CreditCard, Users, Table } from "lucide-react";
 
 export function ProblemSection() {
     return (
-        <section className="bg-white py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl lg:text-center">
-                    <h2 className="text-base font-semibold leading-7 text-brand-600">The Problem</h2>
-                    <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                        Spreadsheets are killing your growth
-                    </p>
-                    <p className="mt-6 text-lg leading-8 text-slate-600">
-                        Most SaaS founders are flying blind. You have data in Stripe, data in HubSpot, and a messy spreadsheet trying to connect them. It's manual, error-prone, and slow.
+        <section className="bg-navy-rich py-16 lg:py-24">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+                <div className="mx-auto max-w-2xl mb-16">
+                    <h2 className="text-sm font-semibold tracking-widest text-yellow-primary uppercase mb-4">
+                        THE PROBLEM
+                    </h2>
+                    <p className="text-3xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
+                        Your revenue data is everywhere.
+                        <br />
+                        Your insights are nowhere.
                     </p>
                 </div>
-                <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                    <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
-                        <div className="flex flex-col">
-                            <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-slate-900">
-                                <FileSpreadsheet className="h-5 w-5 flex-none text-red-500" aria-hidden="true" />
-                                Data Silos
-                            </dt>
-                            <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-600">
-                                <p className="flex-auto">
-                                    Your billing data lives in Stripe. Your sales data lives in HubSpot. They don't talk to each other, leaving you with fragmented insights.
-                                </p>
-                            </dd>
+
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {/* Card 1: Stripe */}
+                    <div className="flex flex-col items-start p-10 bg-white rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+                        <div className="mb-6 p-3 bg-blue-50 rounded-lg">
+                            <CreditCard className="h-10 w-10 text-navy-rich" />
                         </div>
-                        <div className="flex flex-col">
-                            <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-slate-900">
-                                <Clock className="h-5 w-5 flex-none text-red-500" aria-hidden="true" />
-                                Wasted Time
-                            </dt>
-                            <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-600">
-                                <p className="flex-auto">
-                                    Founders spend 5+ hours every week manually updating spreadsheets just to answer basic questions like "What's our MRR?".
-                                </p>
-                            </dd>
+                        <h3 className="text-2xl font-bold text-navy-deep mb-3 text-left">
+                            Stripe has your revenue
+                        </h3>
+                        <p className="text-base text-slate-600 leading-relaxed text-left">
+                            But tracking MRR means custom queries and manual calculations.
+                        </p>
+                    </div>
+
+                    {/* Card 2: HubSpot */}
+                    <div className="flex flex-col items-start p-10 bg-white rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+                        <div className="mb-6 p-3 bg-blue-50 rounded-lg">
+                            <Users className="h-10 w-10 text-navy-rich" />
                         </div>
-                        <div className="flex flex-col">
-                            <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-slate-900">
-                                <AlertTriangle className="h-5 w-5 flex-none text-red-500" aria-hidden="true" />
-                                Guesswork
-                            </dt>
-                            <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-600">
-                                <p className="flex-auto">
-                                    Without accurate forecasting, you're guessing at your runway and hiring plan. One wrong assumption can be fatal.
-                                </p>
-                            </dd>
+                        <h3 className="text-2xl font-bold text-navy-deep mb-3 text-left">
+                            HubSpot has your customers
+                        </h3>
+                        <p className="text-base text-slate-600 leading-relaxed text-left">
+                            But connecting revenue to behavior means exports and pivot tables.
+                        </p>
+                    </div>
+
+                    {/* Card 3: Spreadsheets */}
+                    <div className="flex flex-col items-start p-10 bg-white rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-200 md:col-span-2 lg:col-span-1">
+                        <div className="mb-6 p-3 bg-blue-50 rounded-lg">
+                            <Table className="h-10 w-10 text-navy-rich" />
                         </div>
-                        <div className="flex flex-col">
-                            <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-slate-900">
-                                <XCircle className="h-5 w-5 flex-none text-red-500" aria-hidden="true" />
-                                Missed Churn
-                            </dt>
-                            <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-600">
-                                <p className="flex-auto">
-                                    You find out about churn after it happens. No early warning signs means no chance to save at-risk accounts.
-                                </p>
-                            </dd>
-                        </div>
-                    </dl>
+                        <h3 className="text-2xl font-bold text-navy-deep mb-3 text-left">
+                            Your spreadsheet has chaos
+                        </h3>
+                        <p className="text-base text-slate-600 leading-relaxed text-left">
+                            Manual merging is slow, error-prone, and never up-to-date.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>

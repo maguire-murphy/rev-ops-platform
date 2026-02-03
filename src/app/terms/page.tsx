@@ -4,7 +4,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Terms of Service",
-    description: "Terms of Service for the RevOps Analytics Platform portfolio project.",
+    description: "Terms of Service for the Beacon Platform portfolio project.",
     path: "/terms",
 });
 
@@ -30,7 +30,7 @@ export default function TermsPage() {
                 <div className="prose prose-slate mt-12 max-w-none">
                     <div className="rounded-lg bg-amber-50 border border-amber-200 p-6 not-prose mb-8">
                         <p className="text-amber-800 text-sm">
-                            <strong>Note:</strong> This is a portfolio demonstration project. The terms below are provided for 
+                            <strong>Note:</strong> This is a portfolio demonstration project. The terms below are provided for
                             completeness but this is not a commercial service.
                         </p>
                     </div>
@@ -38,8 +38,8 @@ export default function TermsPage() {
                     <section>
                         <h2>About This Project</h2>
                         <p>
-                            The RevOps Analytics Platform is a portfolio project demonstrating revenue operations 
-                            analytics capabilities. It integrates with Stripe and HubSpot APIs to provide MRR tracking, 
+                            Beacon is a portfolio project demonstrating revenue operations
+                            analytics capabilities. It integrates with Stripe and HubSpot APIs to provide MRR tracking,
                             churn analytics, and pipeline visibility.
                         </p>
                     </section>
@@ -47,8 +47,8 @@ export default function TermsPage() {
                     <section>
                         <h2>Demo Usage</h2>
                         <p>
-                            The demo environment is provided for demonstration purposes. Sample data is used to 
-                            showcase platform features. Users should not enter real customer data or connect 
+                            The demo environment is provided for demonstration purposes. Sample data is used to
+                            showcase platform features. Users should not enter real customer data or connect
                             production API accounts to the demo.
                         </p>
                     </section>
@@ -56,13 +56,13 @@ export default function TermsPage() {
                     <section>
                         <h2>Open Source License</h2>
                         <p>
-                            This project is available under the MIT License. You are free to use, modify, and 
+                            This project is available under the MIT License. You are free to use, modify, and
                             distribute the code in accordance with the license terms.
                         </p>
                         <p>
                             See the{" "}
-                            <a 
-                                href="https://github.com/yourusername/revops-analytics/blob/main/LICENSE" 
+                            <a
+                                href="https://github.com/yourusername/revops-analytics/blob/main/LICENSE"
                                 className="text-brand-600 hover:text-brand-700"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -76,8 +76,8 @@ export default function TermsPage() {
                     <section>
                         <h2>No Warranty</h2>
                         <p>
-                            This software is provided "as is" without warranty of any kind. This is a demonstration 
-                            project and should not be used for production business operations without appropriate 
+                            This software is provided "as is" without warranty of any kind. This is a demonstration
+                            project and should not be used for production business operations without appropriate
                             review and modification.
                         </p>
                     </section>

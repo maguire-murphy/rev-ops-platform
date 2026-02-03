@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { BarChart2, Twitter, Linkedin, Github } from "lucide-react";
+import { Twitter, Linkedin, Github } from "lucide-react";
+import { LighthouseIcon } from "@/components/LighthouseIcon";
 
 export function Footer() {
     return (
@@ -7,11 +8,11 @@ export function Footer() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="col-span-2 lg:col-span-2">
-                        <div className="flex items-center gap-2 font-bold text-xl text-brand-900">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">
-                                <BarChart2 className="h-5 w-5" />
+                        <div className="flex items-center gap-2 font-bold text-xl text-navy-deep">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-rich text-white">
+                                <LighthouseIcon className="h-6 w-6" />
                             </div>
-                            <span>RevOps Analytics</span>
+                            <span>Beacon</span>
                         </div>
                         <p className="mt-4 text-sm leading-6 text-slate-600 max-w-xs">
                             A portfolio project exploring revenue operations analytics for early-stage SaaS companies.

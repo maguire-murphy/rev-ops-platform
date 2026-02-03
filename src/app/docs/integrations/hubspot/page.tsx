@@ -11,22 +11,22 @@ export const metadata: Metadata = generateMetadata({
 
 export default function HubSpotIntegrationPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
             <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
                 <div className="mb-8">
-                    <Link href="/docs" className="text-sm text-brand-600 hover:text-brand-700">
+                    <Link href="/docs" className="text-sm text-yellow-primary hover:text-yellow-soft">
                         ← Back to Documentation
                     </Link>
                 </div>
 
-                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                     HubSpot Integration
                 </h1>
-                <p className="mt-4 text-lg text-slate-600">
+                <p className="mt-4 text-lg text-slate-300">
                     Connect HubSpot to see how your sales pipeline correlates with revenue metrics.
                 </p>
 
-                <div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4">
+                <div className="prose prose-invert prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed prose-h2:mt-12 prose-h2:mb-6 prose-h3:mt-8 prose-h3:mb-4">
                     <h2>Overview</h2>
                     <p>
                         The HubSpot integration brings CRM data into the platform, allowing you to:

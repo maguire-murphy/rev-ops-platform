@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: "RevOps Analytics",
-        short_name: "RevOps",
-        description: "Revenue operations analytics platform connecting Stripe and HubSpot.",
+        name: "Beacon Platform",
+        short_name: "Beacon",
+        description: "Beacon revenue operations platform connecting Stripe and HubSpot.",
         start_url: "/",
         display: "standalone",
         background_color: "#ffffff",

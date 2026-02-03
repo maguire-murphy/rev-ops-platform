@@ -1,6 +1,6 @@
-# Revenue Operations Analytics Platform
+# Beacon - Revenue Operations Platform
 
-An integrated metrics dashboard connecting Stripe and HubSpot data for early-stage SaaS companies.
+Beacon is an integrated metrics dashboard connecting Stripe and HubSpot data for early-stage SaaS companies.
 
 [**Try Demo**](https://rev-ops-platform.vercel.app) | [Documentation](#documentation)
 
@@ -10,7 +10,7 @@ An integrated metrics dashboard connecting Stripe and HubSpot data for early-sta
 
 Early-stage SaaS founders typically manage revenue data across multiple systems—Stripe for payments, HubSpot for customer relationships, and spreadsheets for analysis. This fragmentation creates blind spots in understanding MRR, churn patterns, and customer lifetime value.
 
-This platform integrates directly with Stripe and HubSpot APIs to provide unified visibility into key business metrics through a single dashboard.
+Beacon integrates directly with Stripe and HubSpot APIs to provide unified visibility into key business metrics through a single dashboard.
 
 ## Background
 

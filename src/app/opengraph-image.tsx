@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "RevOps Analytics Platform";
+export const alt = "Beacon Platform";
 export const size = {
     width: 1200,
     height: 630,
@@ -14,7 +14,7 @@ export default async function Image() {
             <div
                 style={{
                     fontSize: 128,
-                    background: "linear-gradient(135deg, #1e3a5f 0%, #3730a3 100%)",
+                    background: "#0A1628",
                     width: "100%",
                     height: "100%",
                     display: "flex",
@@ -38,17 +38,19 @@ export default async function Image() {
                             width: "120px",
                             height: "120px",
                             borderRadius: "24px",
-                            background: "rgba(255, 255, 255, 0.15)",
+                            background: "rgba(255, 255, 255, 0.1)",
+                            border: "2px solid rgba(255, 255, 255, 0.1)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            fontSize: "48px",
+                            fontSize: "64px",
                             fontWeight: "bold",
+                            color: "#FFD93D",
                         }}
                     >
-                        RA
+                        B
                     </div>
-                    <div style={{ fontWeight: "bold", fontSize: "72px" }}>RevOps Analytics</div>
+                    <div style={{ fontWeight: "bold", fontSize: "72px" }}>Beacon</div>
                 </div>
                 <div
                     style={{
@@ -58,7 +60,7 @@ export default async function Image() {
                         letterSpacing: "-0.5px",
                     }}
                 >
-                    Revenue Operations Analytics Platform
+                    Revenue Operations Platform
                 </div>
             </div>
         ),

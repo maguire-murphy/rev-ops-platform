@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
-const SITE_NAME = "RevOps Analytics";
+const SITE_NAME = "Beacon";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
-const SITE_DESCRIPTION = "Revenue operations analytics platform connecting Stripe and HubSpot for unified SaaS metrics.";
+const SITE_DESCRIPTION = "Beacon is a revenue operations platform connecting Stripe and HubSpot for unified SaaS metrics.";
 const DEFAULT_OG_IMAGE = "/og-image.png";
 
 interface PageMetadata {

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { signupUser } from "@/server/actions/auth";
 import { signIn } from "next-auth/react";
 import { Loader2, Eye, EyeOff } from "lucide-react";
+import { LighthouseIcon } from "@/components/LighthouseIcon";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -82,15 +83,15 @@ export default function SignupPage() {
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link href="/" className="flex justify-center">
-                    <div className="h-12 w-12 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-2xl font-bold">
-                        B
+                    <div className="h-12 w-12 rounded-lg bg-navy-rich border border-white/10 flex items-center justify-center text-white text-2xl font-bold">
+                        <LighthouseIcon className="h-8 w-8" />
                     </div>
                 </Link>
-                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900">
+                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-navy-deep">
                     Create your company workspace
                 </h2>
                 <p className="mt-2 text-center text-sm text-slate-600">
-                    Set up your RevOps dashboard for your team
+                    Set up your Beacon dashboard for your team
                 </p>
                 <p className="mt-1 text-center text-xs text-slate-500">
                     Already have an account?{" "}

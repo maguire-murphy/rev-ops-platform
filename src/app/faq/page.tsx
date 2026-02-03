@@ -4,7 +4,7 @@ import { generateMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateMetadata({
     title: "Frequently Asked Questions",
-    description: "Get answers to common questions about the RevOps Analytics platform, integrations, and data security.",
+    description: "Get answers to common questions about Beacon, integrations, and data security.",
     path: "/faq",
 });
 
@@ -15,7 +15,7 @@ export default function FAQPage() {
             questions: [
                 {
                     q: "What is this platform?",
-                    a: "This is a revenue analytics platform built as a portfolio project. It demonstrates integration with Stripe and HubSpot APIs to track MRR, ARR, churn, retention, and pipeline metrics for B2B SaaS companies.",
+                    a: "Beacon is a revenue analytics platform built as a portfolio project. It demonstrates integration with Stripe and HubSpot APIs to track MRR, ARR, churn, retention, and pipeline metrics for B2B SaaS companies.",
                 },
                 {
                     q: "Who would use this type of tool?",

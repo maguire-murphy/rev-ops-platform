@@ -94,7 +94,7 @@ export default function ContactPage() {
                         About This Project
                     </h2>
                     <p className="mt-2 text-sm text-slate-600">
-                        This RevOps Analytics Platform is a portfolio project demonstrating full-stack 
+                        This Beacon Platform is a portfolio project demonstrating full-stack
                         development skills, API integrations, and product thinking for B2B SaaS tools.
                     </p>
                     <div className="mt-4 flex flex-col gap-4 sm:flex-row">

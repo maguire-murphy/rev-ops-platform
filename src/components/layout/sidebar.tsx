@@ -16,6 +16,7 @@ import {
     Home,
     ExternalLink,
 } from "lucide-react";
+import { LighthouseIcon } from "@/components/LighthouseIcon";
 
 const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -49,21 +50,21 @@ export function Sidebar() {
             {/* Sidebar */}
             <div
                 className={cn(
-                    "fixed md:static inset-y-0 left-0 z-50 flex h-full w-64 flex-col border-r bg-slate-900 text-white transition-transform duration-300 md:translate-x-0",
+                    "fixed md:static inset-y-0 left-0 z-50 flex h-full w-64 flex-col border-r border-white/10 bg-navy-deep text-white transition-transform duration-300 md:translate-x-0",
                     isOpen ? "translate-x-0" : "-translate-x-full"
                 )}
             >
                 {/* Logo & Mobile close button */}
                 <div className="flex h-16 items-center justify-between px-6 md:justify-center">
-                    <Link 
-                        href="/" 
+                    <Link
+                        href="/"
                         className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity"
-                        title="Back to Project Overview"
+                        title="Back to Landing Page"
                     >
-                        <div className="h-8 w-8 rounded-lg bg-indigo-500 flex items-center justify-center">
-                            <BarChart3 className="h-5 w-5" />
+                        <div className="h-8 w-8 rounded-lg bg-navy-rich border border-white/10 flex items-center justify-center">
+                            <LighthouseIcon className="h-6 w-6" />
                         </div>
-                        <span className="hidden lg:inline">RevOps</span>
+                        <span className="hidden lg:inline">Beacon</span>
                     </Link>
                     <button
                         onClick={() => setIsOpen(false)}

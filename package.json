@@ -1,7 +1,7 @@
 {
-  "name": "rev-ops-platform",
+  "name": "beacon-platform",
   "version": "1.0.0",
-  "description": "Revenue Operations Analytics Platform - Integrated Stripe and HubSpot metrics for early-stage SaaS",
+  "description": "Beacon - Revenue Operations Platform",
   "author": "Maguire Murphy <maguire.murphy@live.com>",
   "license": "MIT",
   "repository": {

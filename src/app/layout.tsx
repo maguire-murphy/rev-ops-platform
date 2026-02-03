@@ -20,7 +20,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...genMetadata({
-    title: "RevOps Analytics",
+    title: "Beacon",
     description: "Revenue operations analytics platform connecting Stripe and HubSpot for unified SaaS metrics.",
     path: "/",
   }),

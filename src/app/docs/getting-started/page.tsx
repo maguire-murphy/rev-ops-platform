@@ -11,25 +11,25 @@ export const metadata: Metadata = generateMetadata({
 
 export default function GettingStartedPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
             <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
                 <div className="mb-8">
-                    <Link href="/docs" className="text-sm text-brand-600 hover:text-brand-700">
+                    <Link href="/docs" className="text-sm text-yellow-primary hover:text-yellow-soft">
                         ← Back to Documentation
                     </Link>
                 </div>
 
-                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                     Getting Started
                 </h1>
-                <p className="mt-4 text-lg text-slate-600">
+                <p className="mt-4 text-lg text-slate-300">
                     Follow this guide to set up your account and start tracking your SaaS revenue metrics in minutes.
                 </p>
 
-                <div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed">
+                <div className="prose prose-invert prose-lg mt-12 max-w-none prose-headings:font-bold prose-p:leading-relaxed prose-li:leading-relaxed">
                     <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-yellow-primary text-lg font-bold">
                                 1
                             </span>
                             Create Your Account
@@ -43,13 +43,13 @@ export default function GettingStartedPage() {
                             <li>Verify your email address (check your inbox for a confirmation email)</li>
                             <li>Complete your profile with your company information</li>
                         </ol>
-                        <div className="not-prose flex items-start gap-3 rounded-lg bg-blue-50 p-4 my-6">
-                            <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5" />
+                        <div className="not-prose flex items-start gap-3 rounded-lg bg-navy-rich border border-white/10 p-4 my-6">
+                            <CheckCircle2 className="h-5 w-5 text-yellow-primary mt-0.5" />
                             <div>
-                                <p className="text-sm font-medium text-blue-900">
+                                <p className="text-sm font-medium text-white">
                                     No credit card required
                                 </p>
-                                <p className="text-sm text-blue-700">
+                                <p className="text-sm text-slate-300">
                                     Start with our free tier and upgrade when you're ready.
                                 </p>
                             </div>
@@ -58,7 +58,7 @@ export default function GettingStartedPage() {
 
                     <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-yellow-primary text-lg font-bold">
                                 2
                             </span>
                             Connect Stripe
@@ -76,7 +76,7 @@ export default function GettingStartedPage() {
                         <div className="not-prose my-6">
                             <Link
                                 href="/docs/integrations/stripe"
-                                className="flex items-center gap-2 text-brand-600 hover:text-brand-700"
+                                className="flex items-center gap-2 text-yellow-primary hover:text-yellow-soft"
                             >
                                 <ArrowRight className="h-4 w-4" />
                                 <span className="text-sm font-medium">Detailed Stripe integration guide</span>
@@ -96,7 +96,7 @@ export default function GettingStartedPage() {
 
                     <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-yellow-primary text-lg font-bold">
                                 3
                             </span>
                             Connect HubSpot (Optional)
@@ -113,7 +113,7 @@ export default function GettingStartedPage() {
                         <div className="not-prose my-6">
                             <Link
                                 href="/docs/integrations/hubspot"
-                                className="flex items-center gap-2 text-brand-600 hover:text-brand-700"
+                                className="flex items-center gap-2 text-yellow-primary hover:text-yellow-soft"
                             >
                                 <ArrowRight className="h-4 w-4" />
                                 <span className="text-sm font-medium">Detailed HubSpot integration guide</span>
@@ -123,7 +123,7 @@ export default function GettingStartedPage() {
 
                     <section className="mb-16">
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-yellow-primary text-lg font-bold">
                                 4
                             </span>
                             Explore Your Dashboard
@@ -151,7 +151,7 @@ export default function GettingStartedPage() {
 
                     <section>
                         <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-600 text-lg font-bold">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-yellow-primary text-lg font-bold">
                                 5
                             </span>
                             Next Steps
@@ -160,24 +160,24 @@ export default function GettingStartedPage() {
                         <div className="not-prose space-y-4 my-6">
                             <Link
                                 href="/dashboard"
-                                className="block rounded-lg border border-slate-200 p-6 hover:border-brand-600 transition-colors"
+                                className="block rounded-lg border border-white/10 p-6 hover:border-yellow-primary transition-colors bg-navy-rich"
                             >
-                                <h3 className="font-semibold text-slate-900">Visit your dashboard</h3>
-                                <p className="text-sm text-slate-600 mt-1">Start exploring your revenue metrics</p>
+                                <h3 className="font-semibold text-white">Visit your dashboard</h3>
+                                <p className="text-sm text-slate-300 mt-1">Start exploring your revenue metrics</p>
                             </Link>
                             <Link
                                 href="/customers"
-                                className="block rounded-lg border border-slate-200 p-6 hover:border-brand-600 transition-colors"
+                                className="block rounded-lg border border-white/10 p-6 hover:border-yellow-primary transition-colors bg-navy-rich"
                             >
-                                <h3 className="font-semibold text-slate-900">Review customer health</h3>
-                                <p className="text-sm text-slate-600 mt-1">See which customers are thriving or at risk</p>
+                                <h3 className="font-semibold text-white">Review customer health</h3>
+                                <p className="text-sm text-slate-300 mt-1">See which customers are thriving or at risk</p>
                             </Link>
                             <Link
                                 href="/faq"
-                                className="block rounded-lg border border-slate-200 p-6 hover:border-brand-600 transition-colors"
+                                className="block rounded-lg border border-white/10 p-6 hover:border-yellow-primary transition-colors bg-navy-rich"
                             >
-                                <h3 className="font-semibold text-slate-900">Browse FAQ</h3>
-                                <p className="text-sm text-slate-600 mt-1">Find answers to common questions</p>
+                                <h3 className="font-semibold text-white">Browse FAQ</h3>
+                                <p className="text-sm text-slate-300 mt-1">Find answers to common questions</p>
                             </Link>
                         </div>
                     </section>
