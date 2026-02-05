@@ -11,7 +11,7 @@ export function AboutSection() {
 
                 <div className="space-y-6 text-lg text-blue-200/80 leading-relaxed mb-12">
                     <p>
-                        Beacon is a portfolio project exploring revenue operations challenges
+                        Beacon is a project exploring revenue operations challenges
                         for early-stage SaaS companies. It demonstrates product development
                         from market research and feature specification through implementation.
                     </p>
@@ -35,13 +35,6 @@ export function AboutSection() {
                         className="flex items-center gap-2 text-yellow-primary font-semibold hover:text-yellow-soft hover:underline underline-offset-4 transition-all"
                     >
                         View on GitHub
-                        <ArrowRight className="h-4 w-4" />
-                    </Link>
-                    <Link
-                        href="/docs/case-study"
-                        className="flex items-center gap-2 text-yellow-primary font-semibold hover:text-yellow-soft hover:underline underline-offset-4 transition-all"
-                    >
-                        Read Case Study
                         <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>

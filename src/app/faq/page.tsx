@@ -15,7 +15,7 @@ export default function FAQPage() {
             questions: [
                 {
                     q: "What is this platform?",
-                    a: "Beacon is a revenue analytics platform built as a portfolio project. It demonstrates integration with Stripe and HubSpot APIs to track MRR, ARR, churn, retention, and pipeline metrics for B2B SaaS companies.",
+                    a: "Beacon is a revenue analytics platform. It demonstrates integration with Stripe and HubSpot APIs to track MRR, ARR, churn, retention, and pipeline metrics for B2B SaaS companies.",
                 },
                 {
                     q: "Who would use this type of tool?",
@@ -23,7 +23,7 @@ export default function FAQPage() {
                 },
                 {
                     q: "Is this a production application?",
-                    a: "This is a portfolio demonstration with working integrations. The demo environment uses sample data to showcase the platform's capabilities.",
+                    a: "This is a demonstration with working integrations and full functionality. The demo environment uses sample data to showcase the platform's capabilities.",
                 },
             ],
         },

@@ -15,13 +15,13 @@ export function RetentionTab() {
 
     return (
         <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Retention & Cohort Analysis</h3>
+            <h3 className="text-xl font-bold text-navy-deep">Retention & Cohort Analysis</h3>
 
             {/* Churn Rate Card */}
             <div className="rounded-xl border bg-white p-6 shadow-sm">
                 <div className="mb-4">
-                    <h4 className="text-lg font-medium text-slate-900">Churn Rate Trend (30 Days)</h4>
-                    <p className="text-sm text-slate-500">
+                    <h4 className="text-lg font-bold text-navy-deep">Churn Rate Trend (30 Days)</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">
                         Daily churn rate based on MRR snapshots.
                     </p>
                 </div>
@@ -48,18 +48,18 @@ export function RetentionTab() {
                         <button
                             onClick={() => setCohortType("revenue")}
                             className={`${cohortType === "revenue"
-                                ? "border-yellow-primary text-navy-rich"
-                                : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
-                                } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+                                ? "border-yellow-primary text-navy-deep border-b-2"
+                                : "border-transparent text-slate-500 hover:text-navy-rich hover:border-slate-300"
+                                } whitespace-nowrap py-4 px-1 font-bold text-sm transition-all`}
                         >
                             Revenue Retention
                         </button>
                         <button
                             onClick={() => setCohortType("customer")}
                             className={`${cohortType === "customer"
-                                ? "border-yellow-primary text-navy-rich"
-                                : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
-                                } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+                                ? "border-yellow-primary text-navy-deep border-b-2"
+                                : "border-transparent text-slate-500 hover:text-navy-rich hover:border-slate-300"
+                                } whitespace-nowrap py-4 px-1 font-bold text-sm transition-all`}
                         >
                             Customer Retention
                         </button>
@@ -73,8 +73,8 @@ export function RetentionTab() {
                             <div className="text-center py-8 text-slate-500">Loading revenue cohorts...</div>
                         ) : (
                             <div className="space-y-4">
-                                <h4 className="text-lg font-medium text-slate-900">Net Revenue Retention by Cohort</h4>
-                                <p className="text-sm text-slate-500">
+                                <h4 className="text-lg font-bold text-navy-deep">Net Revenue Retention by Cohort</h4>
+                                <p className="text-sm text-slate-600 leading-relaxed">
                                     Percentage of initial MRR retained over time. Values &gt; 100% indicate net expansion.
                                 </p>
                                 <CohortHeatmap data={revenueCohorts || []} type="revenue" />
@@ -85,8 +85,8 @@ export function RetentionTab() {
                             <div className="text-center py-8 text-slate-500">Loading customer cohorts...</div>
                         ) : (
                             <div className="space-y-4">
-                                <h4 className="text-lg font-medium text-slate-900">Customer Retention by Cohort</h4>
-                                <p className="text-sm text-slate-500">
+                                <h4 className="text-lg font-bold text-navy-deep">Customer Retention by Cohort</h4>
+                                <p className="text-sm text-slate-600 leading-relaxed">
                                     Percentage of customers retained over time.
                                 </p>
                                 <CohortHeatmap data={customerCohorts || []} type="customer" />

@@ -19,14 +19,14 @@ export function CohortHeatmap({ data, type }: CohortHeatmapProps) {
         // If > 100% (Expansion), use dark green
         if (percentage >= 110) return "bg-emerald-600 text-white";
         if (percentage >= 100) return "bg-emerald-500 text-white";
-        if (percentage >= 90) return "bg-emerald-400 text-slate-900";
-        if (percentage >= 80) return "bg-emerald-300 text-slate-900";
-        if (percentage >= 70) return "bg-emerald-200 text-slate-900";
-        if (percentage >= 60) return "bg-yellow-200 text-slate-900";
-        if (percentage >= 50) return "bg-yellow-300 text-slate-900";
-        if (percentage >= 40) return "bg-orange-200 text-slate-900";
-        if (percentage >= 20) return "bg-orange-300 text-slate-900";
-        return "bg-red-200 text-slate-900";
+        if (percentage >= 90) return "bg-emerald-400 text-white";
+        if (percentage >= 80) return "bg-emerald-300 text-white";
+        if (percentage >= 70) return "bg-emerald-200 text-white shadow-inner";
+        if (percentage >= 60) return "bg-yellow-200 text-white shadow-inner";
+        if (percentage >= 50) return "bg-yellow-300 text-white shadow-inner";
+        if (percentage >= 40) return "bg-orange-200 text-white shadow-inner";
+        if (percentage >= 20) return "bg-orange-300 text-white shadow-inner";
+        return "bg-red-200 text-white shadow-inner";
     };
 
     const formatValue = (value: number) => {
@@ -43,12 +43,12 @@ export function CohortHeatmap({ data, type }: CohortHeatmapProps) {
     return (
         <div className="rounded-md border overflow-x-auto">
             <table className="w-full text-sm text-left border-collapse">
-                <thead className="bg-muted/50 text-muted-foreground font-medium">
+                <thead className="bg-[#F8FAFC] text-navy-deep font-bold border-b-2 border-slate-200">
                     <tr>
-                        <th className="p-3 border-b min-w-[100px]">Cohort</th>
-                        <th className="p-3 border-b min-w-[80px]">Initial</th>
+                        <th className="p-3 border-b min-w-[100px] text-sm uppercase tracking-wider">Cohort</th>
+                        <th className="p-3 border-b min-w-[80px] text-sm uppercase tracking-wider text-center">Initial</th>
                         {Array.from({ length: 12 }).map((_, i) => (
-                            <th key={i} className="p-3 border-b text-center min-w-[60px]">
+                            <th key={i} className="p-3 border-b text-center min-w-[60px] text-sm uppercase tracking-wider">
                                 M{i}
                             </th>
                         ))}
@@ -56,11 +56,11 @@ export function CohortHeatmap({ data, type }: CohortHeatmapProps) {
                 </thead>
                 <tbody>
                     {data.map((row) => (
-                        <tr key={row.cohort} className="border-b last:border-0 hover:bg-muted/50">
-                            <td className="p-3 font-medium bg-white sticky left-0 z-10 border-r">
+                        <tr key={row.cohort} className="border-b last:border-0 hover:bg-slate-50 transition-colors">
+                            <td className="p-3 font-semibold text-navy-deep bg-white sticky left-0 z-10 border-r">
                                 {row.cohort}
                             </td>
-                            <td className="p-3 bg-white border-r">
+                            <td className="p-3 text-navy-deep font-semibold bg-white border-r text-center">
                                 {formatValue(row.initialSize)}
                             </td>
                             {row.months.map((value, i) => {

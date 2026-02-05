@@ -63,7 +63,7 @@ export function LandingFooter() {
 
                 {/* Copyright */}
                 <p className="text-xs text-slate-600">
-                    &copy; 2025 &middot; Portfolio Project
+                    &copy; 2025 Beacon
                 </p>
             </div>
         </footer>
