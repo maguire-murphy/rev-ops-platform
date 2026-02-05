@@ -57,11 +57,11 @@ export function PipelineForecastChart({ data }: PipelineForecastChartProps) {
                         tickFormatter={(value) => `$${value.toLocaleString()}`}
                     />
                     <Tooltip
-                        formatter={(value: number) => [`$${value.toLocaleString()}`, undefined]}
+                        formatter={(value: number, name: string) => [`$${value.toLocaleString()}`, name]}
                         contentStyle={{ borderRadius: "8px", border: "none", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
                     />
                     <Legend />
-                    <Bar dataKey="Total Value" fill="#e2e8f0" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="Total Value" fill="#94a3b8" radius={[4, 4, 0, 0]} />
                     <Bar dataKey="Weighted Value" fill="#4f46e5" radius={[4, 4, 0, 0]} />
                 </BarChart>
             </ResponsiveContainer>

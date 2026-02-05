@@ -168,66 +168,57 @@ export const forecastRouter = createTRPCRouter({
             const organizationId = user.organizationId;
             const sixMonthsAgo = new Date();
             sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+            const now = new Date();
 
-            // 1. Get Historical Forecasts (Snapshots)
-            // We want the snapshot from the BEGINNING of each month to see what was forecast for that month
-            // Or maybe the end of the previous month?
-            // Let's take the first snapshot of each month.
-            const snapshots = await ctx.db.pipelineSnapshot.findMany({
+            // Get all deals expected to close in the last 6 months.
+            // Includes won, lost, and slipped (still open past their close date).
+            // This gives a per-month view: forecast = total pipeline that was expected
+            // to close in that month, actual = what was actually won.
+            const deals = await ctx.db.deal.findMany({
                 where: {
                     organizationId,
-                    snapshotDate: {
-                        gte: sixMonthsAgo,
-                    },
-                },
-                orderBy: { snapshotDate: "asc" },
-            });
-
-            // 2. Get Actual Won Revenue
-            const wonDeals = await ctx.db.deal.findMany({
-                where: {
-                    organizationId,
-                    isClosed: true,
-                    isWon: true,
                     closeDate: {
                         gte: sixMonthsAgo,
+                        lt: now,
                     },
                 },
                 select: {
                     amount: true,
                     closeDate: true,
+                    isClosed: true,
+                    isWon: true,
                 },
             });
 
-            // Group Actuals by Month
-            const actualsByMonth = new Map<string, number>();
-            for (const deal of wonDeals) {
+            const forecastByMonth = new Map<string, number>();
+            const actualByMonth = new Map<string, number>();
+
+            for (const deal of deals) {
                 if (!deal.closeDate || !deal.amount) continue;
-                const monthKey = deal.closeDate.toISOString().slice(0, 7); // YYYY-MM
-                actualsByMonth.set(monthKey, (actualsByMonth.get(monthKey) || 0) + deal.amount);
+                const monthKey = deal.closeDate.toISOString().slice(0, 7);
+
+                // Every deal with a close date in this month was part of the forecast
+                forecastByMonth.set(monthKey, (forecastByMonth.get(monthKey) || 0) + deal.amount);
+
+                // Only closed-won deals count as actual revenue
+                if (deal.isClosed && deal.isWon) {
+                    actualByMonth.set(monthKey, (actualByMonth.get(monthKey) || 0) + deal.amount);
+                }
             }
 
-            // Group Snapshots by Month (taking the latest snapshot for a month as the "final" forecast? 
-            // Or the average? Let's take the latest one available for that month to represent the state.)
-            // Actually, usually you compare what you forecast at the START of the month vs what you won by the END.
-            // But for simplicity, let's just map snapshots to their months.
-            const forecastsByMonth = new Map<string, number>();
-            for (const snap of snapshots) {
-                const monthKey = snap.snapshotDate.toISOString().slice(0, 7);
-                // Overwrite with latest snapshot for that month
-                forecastsByMonth.set(monthKey, snap.weightedValue);
-            }
-
-            // Combine
-            const months = new Set([...actualsByMonth.keys(), ...forecastsByMonth.keys()]);
-            const result = Array.from(months).map(month => ({
-                date: month,
-                forecast: Math.round(forecastsByMonth.get(month) || 0),
-                actual: actualsByMonth.get(month) || 0,
-                accuracy: (actualsByMonth.get(month) || 0) > 0
-                    ? Math.round(((forecastsByMonth.get(month) || 0) / (actualsByMonth.get(month) || 0)) * 100)
-                    : 0
-            })).sort((a, b) => a.date.localeCompare(b.date));
+            const months = new Set([...forecastByMonth.keys(), ...actualByMonth.keys()]);
+            const result = Array.from(months).map(month => {
+                const forecast = forecastByMonth.get(month) || 0;
+                const actual = actualByMonth.get(month) || 0;
+                return {
+                    date: month,
+                    forecast: Math.round(forecast),
+                    actual,
+                    accuracy: forecast > 0
+                        ? Math.round((actual / forecast) * 100)
+                        : 0,
+                };
+            }).sort((a, b) => a.date.localeCompare(b.date));
 
             return result;
         }),
